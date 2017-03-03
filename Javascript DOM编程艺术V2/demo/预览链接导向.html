@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>预览链接导向</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    
+    <style>
+        a {
+            color:#55b1ff;
+        }
+        
+        a:hover {
+            text-decoration:underline
+        }
+        
+        #slideshow {
+            width:300px;
+            height:300px;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+            background:#000;
+            line-height:100px;
+        }
+        
+        #preview {
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Web Design</h1>
+<p>These are the things you should know.</p>
+<ol id="linkList">
+    <li><a href="jd.html">京东</a></li>
+    <li><a href="zhihu,html">知乎</a></li>
+    <li><a href="51buy.html">易迅</a></li>
+</ol>
+<div id="slideshow">
+    <img src="../images/3.jpg" alt="建立一个网页设计" id="preview">
+</div>
+
+<script src="../js/wong.js"></script>
+<script src="../js/moveElement.js"></script>
+<script src="../js/prepareSlideShow.js"></script>
+<script>
+    addLoadEvent(moveElement('preview'));
+    addLoadEvent(prepareSlideShow);
+</script>
+</body>
+</html>

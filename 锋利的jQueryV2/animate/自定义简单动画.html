@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>自定义简单动画</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        #panel1 {
+            position:relative;
+            width:100px;
+            height:100px;
+            border:5px solid #0050d0;
+            background:#96E555;
+            cursor:pointer;
+        }
+    </style>
+
+</head>
+<body>
+<div id="panel1"></div>
+<!--<button id="btn">BUTTON</button>-->
+
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+
+    //    animate(paras, speed, callback) //语法
+    //    params: 包含样式属性的映射
+    //    speed:速度参数,毫秒
+    //    callback: 在动画完成时执行该函数,可选
+
+    //多重动画,链式添加
+    $(function () {
+        $('#panel1').css({opacity: '0.5'});
+        $('#panel1').click(function () {
+            $(this).animate({left: '300px', height: '150px', width: '150px', borderRadius: '50%', opacity: '1'}, 1500)
+                    .animate({top: '100px', width: '150px', borderRadius: '0'}, 1500, function () {
+                        $(this).css('background', '#f00');
+                    }).fadeOut('slow');
+        });
+    })
+
+
+    $('#panel1').hover(function () {
+        $(this).stop(true)
+                .animate({height: '150px'}, 200)
+                .animate({width: '150px'}, 300);
+    }), function () {
+        $(this).stop(true)
+                .animate({height: '22px'}, 300)
+                .animate({width: '60px'}, 300);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gellery</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        body {
+            background-color:#000;
+            text-align:center;
+        }
+
+        ul {
+            display:block;
+            width:100%
+        }
+
+        ul > li {
+            display:inline-block;
+            padding:5px 15px;
+        }
+
+        a {
+            color:#fff;
+            outline:0;
+            border:none;
+        }
+
+        img[src$=".jpg"] {
+            width:25%;
+            display:block;
+            margin:auto;
+        }
+
+        #desc {
+            color:#f3ec75;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<h1>快照</h1>
+<ul class="clearfix" id="snapshots">
+    <li><a href="../images/1.jpg" title="A" onclick="showPic(this); return false;">图片A</a></li>
+    <li><a href="../images/2.jpg" title="B" onclick="showPic(this); return false;">图片B</a></li>
+    <li><a href="../images/3.jpg" title="C" onclick="showPic(this); return false;">图片C</a></li>
+    <li><a href="../images/4.jpg" title="D" onclick="showPic(this); return false;">图片D</a></li>
+</ul>
+<img src="../images/placeholder.gif" id="placeholder" alt=" my image gallery">
+<p id="desc">Choose an image</p>
+<script>
+
+    function showPic(whichPic) {
+//        获取图片描述
+        var text = whichPic.getAttribute('title');
+//        获取图片路径
+        var source = whichPic.getAttribute('href');
+//        获取占位图片
+        var placeHolder = document.getElementById('placeholder');
+//        获取占位字段
+        var desc = document.getElementById('desc');
+        placeHolder.src = source;
+        desc.innerHTML = text;
+//
+    }
+
+
+</script>
+</body>
+</html>

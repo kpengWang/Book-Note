@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>上传图片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #container {
+            width: 900px;
+            height: 400px;
+            position: relative;
+            top: 15%
+        }
+
+        #update {
+            background: #fff;
+            height: 80px;
+            border-radius: 10px;
+            position: absolute;
+            left: 40px;
+            top: 180px;
+        }
+
+        #update>span {
+            width: 80px;
+            height: 80px;
+            float: left;
+            border: 1px solid #ccc;
+            border-radius: 6px 0 0 6px;
+            background: #c6b;
+        }
+
+        #update>span:hover {
+            background: #8cb;
+        }
+
+
+
+        #update>span>input {
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            opacity: 0;
+        }
+        #fileName {
+            float: left;
+            width: 240px;
+            height: 78px;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-radius: 0 6px 6px 0;
+        }
+        #face {
+            width: 285px;
+            height: 285px;
+            background: red;
+            position: absolute;
+            top: 30px;
+            left: 550px;
+            border: none;
+            border-radius: 6px;
+            overflow: hidden
+        }
+          #face img{}
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="update">
+                <!--上传图片  -->
+            <span>
+              <input type="file" name="" value="" onchange="updateFace(this);" />
+            </span>
+            <input type="text" id="fileName" readonly>
+        </div>
+        <div id="face">
+            <img id="preview" height="200px" />
+        </div>
+    </div>
+    <!--DOM end-->
+
+    <script>
+        var update = document.getElementById('update');
+        var preview = document.getElementById('preview');
+
+        function updateFace(sender) {
+            if (!sender.value.match(/.jpg|.gif|.bmp|.png/i)) {
+                alert('请选择图片！');
+                preview.src='';
+                fileName.value='';
+                return false;
+            } else {
+                var src =window.URL.createObjectURL(sender.files[0]);
+                fileName.value = sender.files[0].name;
+
+                console.log(src);
+                preview.src=src;
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html>

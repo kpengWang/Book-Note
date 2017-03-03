@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素偏移位置</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        #wrap {
+            margin:40px auto;
+            background:#fff;
+            width:300px;
+            height:200px;
+            position:relative;
+        }
+
+        #content {
+            position:absolute;
+            left:10%;
+            top:10%;
+            background:red;
+            width:100px;
+            height:100px
+        }
+
+        p {
+            border:1px solid red;
+            width:200px;
+            height:200px;
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrap" style="">
+    <div id="content"></div>
+</div>
+<p>
+    This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+    This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+    This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+    This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+    This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+    This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+</p>
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+    //    获取元素相对当前窗口到偏移量
+    var offset = $('#wrap').offset();
+    var left1 = offset.left;
+    var top1 = offset.top;
+    //    console.log(top1);
+    //    console.log(left1);
+
+    //    获取元素相对父级relative的偏移量
+    var position = $('#content').position();
+    var left2 = position.left;
+    var top2 = position.top;
+    //    console.log(top2);
+    //    console.log(left2);
+
+    //   获取元素滚动条距顶和距左的偏移量
+    var $p3 = $('p');
+    var scrollTop = $p3.scrollTop();
+    var scrollLeft = $p3.scrollLeft();
+    console.log(scrollTop);
+    console.log(scrollLeft);
+</script>
+</body>
+</html>

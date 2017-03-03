@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>替换节点的方法</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        h1 {
+            font-size:22px;
+            color:#fff
+        }
+
+        li:empty {
+            background:red;
+            height:30px;
+            margin-bottom:5px;
+            color:#fff;
+        }
+
+        b {
+            background:#ffffcc;
+            color:#f00
+        }
+    </style>
+
+</head>
+<body>
+<p title="选择你最喜欢的水果">选择你最喜欢的水果</p>
+<p title="选择你最喜欢的水果">选择你最喜欢的水果</p>
+<ul>
+    <li title="苹果">苹果</li>
+    <li title="香蕉">香蕉</li>
+    <li title="橘子">橘子</li>
+</ul>
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+
+    //   替换节点, 将所选元素的内容替换掉,同时绑定事件消失
+    //    $('p').replaceWith('<strong>你最不喜欢的水果是?</strong>')
+
+
+    //   替换节点,将内容替换成所选元素,同时绑定事件消失
+    //   $('<strong>你最不喜欢的水果是?</strong>').replaceAll('p')
+
+    //    整块包裹节点,将所选节点用其它标签包起来
+    //    $('p').wrapAll('<h1></h1>');
+
+    //    逐个包裹节点,将所选节点用其它标签逐个包起来
+    //    $('p').wrap('<h1></h1>');
+
+    //   将所选节点的内容用指定标签在包裹住
+    //    $('p').wrapInner('<h1></h1>')
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>去除字符串左右两边空格</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+</head>
+
+<body>
+    <h1>去除字符串左右两边空格!</h1>
+    <input type="text" name="" value="            需要过滤空格                      " id="strs" >
+    <input type="button" name="" value="过滤" id="rstrsBtn">
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var strs = document.querySelector('#strs');
+            var rstrsBtn = document.querySelector('#rstrsBtn');
+            rstrsBtn.onclick = function() {
+                strs.value = strs.value.replace(/(^\s+)|(\s+$)/g, ""); //方法一
+                //            strs.value = strs.value.replace(/^(\s|\u00A0)+|(\s|u00A0)+$/g,"");//方法二
+                console.log(strs.value.length)
+            }
+        }
+    </script>
+</body>
+
+</html>

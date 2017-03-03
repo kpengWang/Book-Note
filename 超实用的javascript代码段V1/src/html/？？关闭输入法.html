@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>关闭输入法</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+
+    <style>
+    </style>
+</head>
+<body>
+<h1>关闭输入法</h1>
+<p><label>方案1:</label><input type="text" id="banInputMethodChrome" value="不支持Chrome"></p>
+<p><label>方案2:</label><input type="text" id="banInputMethodChrome2"></p>
+
+<script type="text/javascript">
+    //方案一  植入CSS特殊属性
+//    banInputMethod(getElement("#banInputMethodChrome"));
+//
+//    function banInputMethod(_elementArr) {
+//        var arr = _elementArr;
+//        var self = this;  //增加对外层域的访问
+//        //判断元素是否为数组，如果不是就将它变成数组
+//        if (!(_elementArr instanceof Array)) {
+//            arr = [_elementArr];
+//        }
+//        ;
+//        for (var i = 0; i <= arr.length; i++) {
+//            var arrl = arr[i];
+//            arrl.onfocus = function () {
+//                //样式方案，只兼容Chrome以外的浏览器
+//                this.css.imeMode = 'disabled';
+//            }
+//        }
+//    }
+//
+//    function getElement(eStr) {
+//        return document.querySelector(eStr);
+//    }
+
+    //方案二 事件文本过滤
+    var arr = [
+        document.querySelector('#banInputMethodChrome2'),
+        document.querySelector('#banInputMethod')
+    ];
+    self = this;
+    for (var i = 0; i < arr.length; i++) {
+        var arrl = arr[i];
+
+        arrl.onfocus = function () {
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

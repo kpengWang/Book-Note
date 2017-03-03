@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>3.3鼠标移入移出改变图片样式</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+</head>
+<body>
+<img src="../img/1.jpg" alt="图片" id="imgChangeStyle" width="200"/>
+
+<script>
+    window.onload = function () {
+        var imgChangeStyle = document.querySelector('#imgChangeStyle'),
+                setCss = function (_this, cssOption) {
+                    //判断节点类型
+                    if (!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style) {
+                        return;
+                    }
+                    for (var cs in cssOption) {
+                        _this.style[cs] = cssOption[cs];
+                    }
+                    return _this;
+                };
+        
+        imgChangeStyle.onmouseover = function () {
+            setCss(this, {border: "2px solid red"})
+        }
+        
+        imgChangeStyle.onmouseout = function () {
+            setCss(this, {border: "none"})
+        }
+    };
+</script>
+</body>
+</html>

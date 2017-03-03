@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>30段趣味javascript</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+</head>
+<body>
+
+<script>
+
+
+    window.onload = function () {
+
+//        var test = ['1', '2', '3'].map(parseInt);   //RESULT: re1,NaN,NaN
+//        var test = [typeof null, typeof Object];  //RESULT: object,function
+//        var test = [[3, 2, 1].reduce(Math.pow), [].reduce(Math.pow)];  //RESULT:  error
+//        var test = 'smtg';
+//        console.log('Value is' + (test === 'smg') ? 'something' : 'nothing');//RESULT:  something
+
+//        var test = 'world';
+//        (function () {
+//            if (typeof test === 'undefined') {
+//                var test = 'jack';
+//                console.log('G' + test);
+//            } else {
+//                console.log('H' + test);
+//            }
+//        })();                             //RESULT:  Gworld
+
+
+//        var End = Math.pow(2, 53);      //9007199254740992
+//        var Start = End - 100;          //9007199254740892
+//        var count = 0;
+//        for (var i = Start; i <= End; i++) {
+//            count++;
+//        }
+//        console.log(count);     //RESULT: 101
+
+//        var arr = [0, 1, 2];
+//        arr[10] = 10;
+//        arr.filter(function (x) {
+//            return x === undefined
+//        });                         //RESULT: []
+
+//        var two = 0.2;
+//        var one = 0.1;
+//        var eight = 0.8;
+//        var six = 0.6;
+//        console.log(two-one===one,eight - six === two);     //RESULT: true,false
+        showCase(String('A'));
+        function showCase(value) {
+            switch (value) {
+                case"A":
+                    console.log('case A');
+                    break;
+                case"B":
+                    console.log('case B');
+                    break;
+                case undefined:
+                    console.log('undefined');
+                    break;
+                default:
+                    console.log('Do000000000000');
+            }
+        }
+
+    }
+</script>
+
+</body>
+</html>

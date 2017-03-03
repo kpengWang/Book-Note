@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>弹出框</title>
+    <meta charset="UTF-8">
+    <meta name="viewporcsst" content="width=device-width, initial-scale=1">
+    <link href="../css/reset.css" rel="stylesheet">
+    <style>
+        #popupDIv {
+            border:1px solid #ccc;
+            display:none;
+            height:100px;
+            width:300px;
+            background:red
+        }
+    </style>
+</head>
+
+<body>
+<h2>弹出层</h2>
+<div id="popupDIv">
+    <p><input type="button" id="popupClose" value="关闭"/></p>
+    <p>这是弹出层</p>
+</div>
+
+<input type="button" id="popupOpen" value="弹出"/>
+<script>
+    function setCss(_this, cssOption) {
+        if (!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style) {
+            return;
+        }
+        for (var cs in cssOption) {
+            _this.style[cs] = cssOption[cs];
+        }
+    }
+    
+    function setPopup(e, openPop, closePop) {
+        setCss(e, {
+            "position": "fixed",
+            "zIndex": 100
+        });
+        openPop.onclick = function () {
+            e.style.display = "block";
+            setCss(e, {
+                "left": "50%",
+                "marginLeft": -e.offsetWidth / 2 + "px",
+                "top": ((document.body.scrollTop ||
+                document.documentElement.scrollTop) + window.screen.availHeight / 2 - e.offsetHeight) + "px"
+            });
+        };
+        closePop.onclick = function () {
+            e.style.display = "none";
+        }
+    }
+    
+    setPopup(document.querySelector('#popupDIv'),
+            document.querySelector('#popupOpen'),
+            document.querySelector('#popupClose'))
+</script>
+</body>
+
+</html>

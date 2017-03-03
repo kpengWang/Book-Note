@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>处理事件冒泡</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        #msg {
+            color:#f00
+        }
+
+        span {
+            display:block;
+        }
+    </style>
+
+</head>
+<body>
+<div id="content"><p>外层div<span>内层span</span>外层div</p></div>
+<div id="msg"></div>
+<script src="../script/jquery-1.11.3/jquery.min.js"></script>
+<script>
+    //为span绑定click事件
+    $(function () {
+        var msg = $('#msg');
+        $('span').bind('click', function (even) {
+            var txt = msg.html() + "<p>内层span元素被单击.</p>";
+            msg.html(txt);
+            even.stopPropagation();
+            //return false;
+        })
+    });
+
+    //为div元素绑定click事件
+    $(function () {
+        var msg = $('#msg');
+        $('#content').bind('click', function (even) {
+            var txt = msg.html() + "<p>外层div元素被单击.</p>";
+            msg.html(txt);
+            even.stopPropagation();
+            //return false;
+        })
+    });
+
+    //    为body绑定click事件
+    $(function () {
+        var msg = $('#msg');
+        $('body').bind('click', function (even) {
+            var txt = msg.html() + "<p>body元素被单击.</p>";
+            msg.html(txt);
+            even.stopPropagation();
+            // return false;
+        })
+    })
+
+</script>
+
+</body>
+</html>

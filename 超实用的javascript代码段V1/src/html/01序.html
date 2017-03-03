@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>30段趣味javascript</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+</head>
+<body>
+
+<script>
+
+
+    window.onload = function () {
+
+        if (!funnyJS) {
+            var funnyJS = {};
+        }
+//      判断是否是IE，不支持IE11
+        funnyJS.isIE = function () {
+            if (!+[1,]) {
+                alert("It'\s IE");
+            } else {
+                alert("It'\s not IE ");
+            }
+        };
+
+//      将日期直接转换为数值
+        funnyJS.parseDate = function () {
+            var date = +new Date();
+            alert(date);
+        };
+
+//      在非 IE下将类数组对象"arguments"转为数组 ==>待验证
+        funnyJS.turnAgms = function () {
+            var arr = Array.prototype.slice.call(arguments);
+            alert(arr.instanceOf(Array));
+        };
+
+//       选真操作
+        funnyJS.chooseVal = function () {
+            var a = 0 || 3;
+            alert(a);
+        };
+
+//      单链式操作
+
+        funnyJS.todo1 = function () {
+            var a = 10;
+            alert(a++ - 1);//9
+            alert(a-- + 1);//11
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象的属性</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        a {
+            display:inline-block;
+            color:#fff;
+            background:#4cd964;
+            padding:5px 10px;
+        }
+    </style>
+
+</head>
+<body>
+<a href="#" id="link1">获取事件类型</a>
+<a href="http://google.com" id="link2">获取事件对象</a>
+<a href="http://google.com" id="link3">获取当前鼠标位置</a>
+<a href="http://google.com" id="link4">获取鼠标或者键盘单击事件</a>
+<input type="text" id="ipt1">
+<input type="text" id="ipt2">
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+
+    //获取事件类型
+    $('#link1').click(
+            function (even) {
+                alert(even.type);
+                // 阻止链接跳转
+                return false;
+            }
+    )
+
+    //获取到触发事件的元素
+    $("a[href='http://google.com']").click(
+            function (event) {
+                // 获取事件对象
+                var tg = event.target;
+                alert(tg.href);
+                return false;
+            }
+    )
+
+    // 获取光标相对于页面的x坐标和y坐标
+    $('#link3').click(function (event) {
+        //获取鼠标当前相对于页面的坐标
+        alert('当前鼠标位置:' + event.pageX + ',' + event.pageY);
+        return false;
+    })
+
+    //获取鼠标单击事件中获取到鼠标的左、中、右按键
+    $('#link4').mousedown(function (event) {
+        // 返回值 1=左键,2=中键,3=右键
+        alert(event.which);
+    })
+
+    //在键盘事件中获取键盘的按键
+    $('#ipt1').keyup(function (e) {
+        alert(e.which);
+    })
+
+    //指定为键盘事件中获取<ctrl>键,返回boolean值
+    $('#ipt2').keyup(
+            function (e) {
+                alert(e.metaKey);
+            }
+    )
+</script>
+
+</body>
+</html>

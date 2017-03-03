@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>3.4-Number类型</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/style-index.css"/>
+</head>
+<body>
+
+
+<script>
+
+    //**转换为Boolean值可以用函数Boolean()
+
+    //    Boolean
+    var isTrue = Boolean(true);
+    var isFalse = Boolean(false);
+
+    console.log(isTrue);  // true
+    console.log(isFalse);  // false （空字符串）
+
+    //    String
+    var isStr1 = Boolean('hello world');
+    var isStr2 = Boolean('');
+
+    console.log(isStr1);  // true
+    console.log(isStr2);  // false （空字符串）
+
+    //   Number
+    var isNumber1 = Boolean(1234); //任何非0和NaN数值
+    var isNumber2 = Boolean(0);
+    var isNumber3 = Boolean(NaN);
+
+    console.log(isNumber1);  // true
+    console.log(isNumber2);  // false
+    console.log(isNumber3);  // false
+
+
+    //   Number
+    var isNumber1 = Boolean([]);  //任何非null 对象
+    var isNumber2 = Boolean(null);
+
+    console.log(isNumber1);  // true
+    console.log(isNumber2);  // false
+
+
+    //   Undefined
+    var isUndefined = Boolean(undefined);  //任何非null 对象
+
+    console.log(isUndefined);  // false
+</script>
+</body>
+</html>

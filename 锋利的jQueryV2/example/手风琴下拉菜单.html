@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴下拉菜单</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        .box {
+            background:#f4f4f4;
+            width:200px;
+            margin:0 auto;
+            text-align:center;
+        }
+
+        .level1 {
+            border-bottom:1px solid #999;
+        }
+
+        .level1 > a {
+            color:#333;
+            display:block;
+            line-height:24px;
+            padding:5px 0
+        }
+
+        .level2 {
+            background:#c0c8d2;
+            display:none;
+        }
+
+        .level2 a {
+            color:#EE7800;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <ul class="menu">
+        <li class="level1"><a href="#">衬衫</a>
+            <ul class="level2">
+                <li><a href="#">短袖衬衫</a></li>
+                <li><a href="#">长袖衬衫</a></li>
+                <li><a href="#">短袖T恤</a></li>
+                <li><a href="#">长袖T恤</a></li>
+            </ul>
+        </li>
+        <li class="level1"><a href="#">卫衣</a>
+            <ul class="level2">
+                <li><a href="#">开襟卫衣</a></li>
+                <li><a href="#">套头卫衣</a></li>
+                <li><a href="#">运动卫衣</a></li>
+                <li><a href="#">童装卫衣</a></li>
+            </ul>
+        </li>
+        <li class="level1"><a href="#">裤子</a>
+            <ul class="level2">
+                <li><a href="#">短裤</a></li>
+                <li><a href="#">休闲裤</a></li>
+                <li><a href="#">牛仔裤</a></li>
+                <li class="item-1"><a href="#">免烫卡其裤</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script src="../script/jquery-1.11.3/jquery.min.js"></script>
+<script>
+    $('.level1>a').click(
+            function () {
+                //给当前a元素添加current类
+                $(this).addClass('current')
+                        //下一个元素显示隐藏切换
+                        .next().slideToggle(100)
+                        //父级的同辈子元素a移除current类
+                        .parent().siblings().children('a').removeClass('current')
+                        //让它们的下一个元素.level2隐藏
+                        .next().slideUp(400);
+                return false;
+            }
+    )
+
+//    $('.item-1').closest('ul').css('background-color', 'green');
+</script>
+</body>
+</html>

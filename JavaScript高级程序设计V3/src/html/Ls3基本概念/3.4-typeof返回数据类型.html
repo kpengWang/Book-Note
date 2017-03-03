@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>3.4-typeof返回数据类型</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../css/style-index.css"/>
+</head>
+<body>
+
+
+<script>
+    //  typeof
+    var isString = "";
+    var isNull = null;
+    var isWindow = window;
+    var isUndefined = undefined;
+    var isNumber = 95;
+    var isFn = function () {
+        console.log('something')
+    };
+    var isArr = [];
+    var isObj = {};
+
+    console.log(typeof isString);        // "string"
+    console.log(typeof isNull);       // object
+    console.log(typeof isWindow);     // object
+    console.log(typeof isUndefined);  // undefined
+    console.log(typeof isNumber);  // number
+    console.log(typeof isFn);  // function
+    console.log(typeof isArr);  // object
+    console.log(typeof isObj);  // object
+
+</script>
+</body>
+</html>

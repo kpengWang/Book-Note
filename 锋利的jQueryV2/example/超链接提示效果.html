@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>超链接提示效果</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        a {
+            color:#fff;
+        }
+
+        #tooltip {
+            background:red;
+            width:200px;
+            line-height:30px;
+            position:absolute;
+            color:#ffc;
+            padding:0 5px;
+        }
+    </style>
+
+</head>
+<body>
+<p><a href="#" class="tooltip" title="这里是我的超链接提示1.">提示1</a></p>
+<p><a href="#" class="tooltip" title="这里是我的超链接提示2.">提示2</a></p>
+<p><a href="#" title="这里是原生提示1">原生提示1</a></p>
+<p><a href="#" title="这里是原生提示2">原生提示2</a></p>
+
+<script src="../script/jquery-1.11.3/jquery.min.js"></script>
+<script>
+    $(function () {
+        var x = 10;
+        var y = 20;
+        $('a.tooltip').mouseover(function (e) {
+            this.myTitle = this.title;
+//          解决原生title值同时出现
+            this.title = '';
+
+//            创建<div>元素
+            var tooltip = "<div id='tooltip'>" + this.myTitle + "</div>";
+            var box = $('#box')
+//            将div追加到文档里
+            $(this).parent().prepend(tooltip);
+
+            $('#tooltip')
+            // 设置x轴坐标和y轴坐标
+                    .css({
+                        'top': ( e.pageY + y) + 'px',
+                        'left': (e.pageX + x) + 'px'
+                    }).show('fast')
+        }).mouseout(function () {
+            this.title = this.myTitle;
+            //移除
+            $('#tooltip').remove()
+        }).mousemove(
+                function (e) {
+                    $('#tooltip')
+                            .css({
+                                'top': (e.pageY + y) + "px",
+                                'left': (e.pageX + x) + "px"
+                            });
+                });
+    })
+</script>
+</body>
+</html>

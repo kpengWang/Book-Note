@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        .video-wrapper {
+            overflow:hidden;
+            width:100%;
+            height:600px;
+        }
+
+        .video-wrapper .controls {
+            position:absolute;
+            height:30px;
+            width:100px;
+            margin:auto;
+            background:rgba(0, 0, 0, 0.5);
+        }
+
+        .video-wrapper button {
+            display:block;
+            width:100%;
+            height:100%;
+            border:none;
+            cursor:pointer;
+            font-size:17px;
+            color:#fff;
+            background:transparent;
+        }
+
+        .video-wrapper button[paused] {
+            font-size:12px
+        }
+
+        .video-wrapper button {
+            z-index:9999;
+            position:absolute;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="video-wrapper">
+    <video id="movie" controls>
+        <source src="../video/movie.mp4">
+    </video>
+
+</div>
+
+
+<script src="../js/player.js"></script>
+</body>
+</html>s

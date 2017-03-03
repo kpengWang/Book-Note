@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jQuery文本段落展开和折叠效果</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+
+        html,
+        body,
+        div,
+        h2,
+        p {
+            margin:0;
+            padding:0;
+            box-sizing:content-box;
+        }
+
+        html {
+            font:1em Arial, Helvetica, sans-serif;
+            color:#444;
+        }
+
+        a {
+            color:#0087f1;
+        }
+
+        p {
+            margin-bottom:5px;
+        }
+
+        #container {
+            margin:0 auto;
+            width:600px;
+        }
+
+        #container h2 {
+            font-size:20px;
+            color:#0087f1;
+        }
+
+        #wrap {
+            position:relative;
+            padding:10px;
+            overflow:hidden;
+        }
+
+        #gradient {
+            width:100%;
+            height:35px;
+            background:#fff;
+            position:absolute;
+            box-shadow:4px -3px 5px rgba(0, 0, 0, 0.04);
+            bottom:0;
+            left:0;
+        }
+
+        .asd {
+            background:#eee
+        }
+
+        #read-more {
+            padding:5px;
+            border-top:1px double #ddd;
+            background:#fff;
+            color:#333;
+            text-align:right;
+        }
+
+        #read-more a {
+            padding-right:22px;
+            background:#fff 100% 50%;
+            font-weight:bold;
+            text-decoration:none;
+        }
+
+        #read-more a:hover {
+            color:#000;
+        }
+    </style>
+    <script src="../script/jquery-1.7.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+<div id="container">
+    <div id="wrap">
+        <p>1234567</p>
+        <a></a>
+        <h1></h1>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p>1234567</p>
+        <p>1234567</p>
+        <p>1234567</p>
+        <p>1234567</p>
+        <p>1234567</p>
+        <p>1234567</p>
+        <p>1234567</p>
+        <div id="gradient"></div>
+    </div>
+    <div id="read-more">
+        <a href="#"><i class="fa fa-angle-down fa-lg"></i></a>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        var slideHeight = 50; // px
+        var defHeight = $('#wrap').height();
+        if (defHeight >= slideHeight) {
+            $('#wrap').css('height', slideHeight + 'px');
+            $('#read-more a').click(function () {
+                var curHeight = $('#wrap').height();
+                if (curHeight == slideHeight) {
+                    $('#wrap').animate({
+                        height: defHeight
+                    }, "slow");
+                    $('#read-more a').find("i").removeClass("fa-angle-down").addClass('fa-angle-up');
+                    $('#gradient').fadeOut();
+                } else {
+                    $('#wrap').animate({
+                        height: slideHeight
+                    }, "slow");
+                    $('#read-more a').find("i").removeClass("fa-angle-up").addClass('fa-angle-down');
+                    $('#gradient').fadeIn();
+                }
+                return false;
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

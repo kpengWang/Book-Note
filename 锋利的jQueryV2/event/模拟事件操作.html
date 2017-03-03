@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>模拟事件操作</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        a {
+            background:#4cd964;
+            color:#fff;
+            padding:5px 10px;
+            border-radius:4px;
+        }
+
+        .wrap {
+            background:#f4f4f4;
+            padding:20px;
+            display:inline-block;
+            color:#333
+        }
+
+        #oDiv {
+            height:30px;
+            line-height:30px;
+            padding:5px;
+            margin:30px 0;
+            border:1px solid #f00;
+        }
+
+        #oDiv.over {
+            background:#f00;
+        }
+
+        #oDiv2 {
+            border:1px solid #0087f1;
+            height:30px;
+            line-height:30px;
+            padding:5px;
+        }
+
+        #oDiv3 {
+            height:30px;
+            padding:5px;
+            line-height:30px;
+            margin:30px 0;
+            border:1px solid #f00;
+        }
+    </style>
+
+</head>
+<body>
+<button type="button" id="btn1">click me1</button>
+<button type="button" id="btn2">click me2</button>
+<button type="button" id="btn3">click me3</button>
+<p id="test"><input type="text"></p>
+<div id="oDiv"><p>绑定多个事件类型</p></div>
+<div id="oDiv2"><p>添加事件命名空间,便于管理</p></div>
+<button type="button" id="btn4">click me4</button>
+<div id="oDiv3"><p>相同事件名称,不同命名空间的执行方法</p></div>
+<button type="button" id="btn5">click me5</button>
+
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+    $('#btn1').bind('click', function () {
+        alert('click1~进入页面立即弹出');
+    });
+    //常用模拟,进入页面直接弹出
+    $('#btn1').trigger('click');
+    //$('#btn').click();   // 简写
+
+    //触发自定义事件
+    $('#btn2').bind('myclick', function () {
+        $('#test').after("<span>click2~自定义事件.</span>");
+    });
+    $('#btn2').trigger('myclick');
+
+
+    //传递数据
+    $('#btn3').bind('myclick', function (event, msg1, msg2) { //获取数据
+        $('#test').append("<span>" + msg1 + msg2 + "</span>");
+    });
+    $('#btn3').trigger('myclick', ['click3~', '我的自定义事件']); //传递两个数据
+
+    // 执行默认操作
+    //    $('#test input').trigger('focus');
+    $('#test input').triggerHandler('focus');
+
+    //1  绑定多个事件类型
+    $('#oDiv').bind('mouseover mouseout', function () {
+        $(this).toggleClass('over');
+    });
+
+
+    //2 添加事件命名空间,便于管理
+    $(function () {
+        $('#oDiv2').bind('click.plugin', function () {
+            $('body').append('<p>click事件</p>');
+        });
+        $('#oDiv2').bind('mouseover.plugin', function () {
+            $('body').append('<p>mouseover 事件</p>')
+        });
+        $('#oDiv2').bind('dblclick', function () {
+            $('body').append('<p>dblclick事件</p>')
+        });
+        $('#btn4').click(function () {
+            $('#oDiv2').unbind('.plugin');
+        })
+
+    })
+
+    // 3 相同事件名称,不同命名空间的执行方法
+    $(function () {
+        $('#oDiv3').bind('click', function () {
+            $('body').append('<p>click事件</p>');
+        });
+        $('#oDiv3').bind('click.plugin', function () {
+            $('body').append('<p>click plugin事件</p>');
+        });
+        $('#btn5').click(function () {
+//            ! 感叹号是匹配所有不包含在命名空间的click方法
+            $('#oDiv3').trigger('click!');
+        })
+    })
+
+</script>
+</body>
+</html>

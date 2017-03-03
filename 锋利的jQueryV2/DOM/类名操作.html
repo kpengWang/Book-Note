@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>类名操作</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        .high {
+            font-weight:bold;
+            color:#cf2d28
+        }
+
+        .another {
+            font-style:italic;
+            color:#2187E7
+        }
+
+        input[type=button] {
+            color:#fff;
+            font-size:14px;
+            padding:0 5px
+        }
+
+        input[type=button]:hover {
+            background:#cc0000;
+        }
+    </style>
+
+</head>
+<body>
+<input type="button" value="输出class类" id="outputBTn">
+<input type="button" value="设置class类" id="setBtn">
+<input type="button" value="追加class类" id="additionalBtn">
+<input type="button" value="删除全部class类" id="deleteBtn">
+<input type="button" value="重复切换class类" id="toggleBtn">
+<p class="myClass">选择你最喜欢的水果</p>
+<ul>
+    <li title="苹果">苹果</li>
+    <li title="香蕉">香蕉</li>
+    <li title="橘子">橘子</li>
+</ul>
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+    var $outputBtn = $('#outputBTn');
+    var $setBtn = $('#setBtn');
+    var $additionalBtn = $('#additionalBtn');
+    var $deleteBtn = $('#deleteBtn');
+    var $toggleBtn = $('#toggleBtn');
+    var $oP = $('p');
+
+
+    //    获取并输出类名
+    $outputBtn.click(function () {
+        var oP = $('p').attr('class')
+        alert(oP);
+    })
+
+    //    设置类名
+    $setBtn.click(function () {
+        $oP.attr('class', 'high')
+    })
+
+    //    追加类名
+    $additionalBtn.click(function () {
+        $oP.addClass('another');
+    })
+
+    //    删除全部类名
+    $deleteBtn.click(function () {
+        $oP.removeClass();
+//        $oP.attr('class','')
+//        $oP.removeAttr('class')
+    })
+
+    //    重复切换类名
+    $toggleBtn.click(
+            function () {
+                $('p').toggleClass('another')
+            }
+    )
+</script>
+</body>
+</html>

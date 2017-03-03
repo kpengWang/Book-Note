@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>选择器的使用</title>
+
+    <!--为移动设备添加 viewport-->
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <!--iPhone会将看起来像电话号码的数字添加电话连接，应当关闭-->
+    <meta name="format-detection" content="telephone=no">
+    <!--添加到主屏幕“后，全屏显示-->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <!--通过快捷方式打开时全屏显示-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--隐藏状态栏-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+        * {
+            margin:0;
+            padding:0
+        }
+
+        div,
+        span {
+
+            width:140px;
+            height:140px;
+            margin:5px;
+            background:#aaa;
+            border:#000 solid 1px;
+            float:left;
+            font-size:14px;
+        }
+
+        p {
+            line-height:1
+        }
+
+        .mini {
+            width:55px;
+            height:55px;
+            background:#aaa;
+            font-size:12px;
+            display:inline-block
+        }
+
+        .hide {
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="one" id="one">
+    <p> id为one, class为one的div。</p>
+    <div class="mini ">
+        <p>class为mini。</p>
+    </div>
+
+</div>
+<div class="one" id="two" title="test">
+    <p> id为two, class为one, title为test的div。</p>
+    <div class="mini" title="other">
+        <p>class为mini, title为other。</p>
+    </div>
+    <div class="mini" title="test">
+        <p>class为mini, title为test。</p>
+    </div>
+</div>
+<div class="one">
+    <div class="mini">
+        <p>class为mini</p>
+    </div>
+    <div class="mini">
+        <p>class为mini</p>
+    </div>
+    <div class="mini">
+        <p>class为mini</p>
+    </div>
+    <div class="mini"></div>
+</div>
+<div class="one">
+    <div class="mini">
+        <p>class为mini</p>
+    </div>
+    <div class="mini">
+        <p>class为mini</p>
+    </div>
+    <div class="mini">
+        <p>class为mini</p>
+    </div>
+    <div class="mini" title="tesst">
+        <p>class为mini, title为tesst。</p>
+    </div>
+</div>
+<div class="one">
+    <div class="mini" title="en-UK">
+        <p>class为mini,title为en-UK</p>
+    </div>
+    <div class="mini" title="english">
+        <p>title为english</p>
+    </div>
+    <div class="mini" title="en uk">
+        <p>title为en uk</p>
+    </div>
+    <div class="mini" title="uken">
+        <p>title为uken</p>
+    </div>
+</div>
+
+<div class="one" style="display:none">
+    <p>style的display为'none'的div。</p>
+</div>
+<div class="hide">
+    <p>class为hide的div。</p>
+</div>
+<div>
+    <p>包含input的type为'hidden'的div。</p>
+    <input type="hidden" size="8">
+</div>
+		<span id="Mover">
+    正在执行动画的span元素。
+</span>
+
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+    /********
+     层次选择器
+     ********/
+    //    ***子代元素***
+    //    $('body>div').css('background','#bfa');
+    //    ***相邻元素***
+    //    $('.one+div').css('background','#bfa');
+    //    $('.one').next('div').css('background','#bfa')
+    //    ***同辈元素***
+    //   (element1 和 element2 这两种元素必须具有相同的父元素，但 element2 不必紧跟在 element1 的后面。)
+    //    $('#two~div').css('background','#bfa');
+    //    $('#two').siblings('div').css('background', '#bfa')
+
+    /********
+     基本过滤选择器
+     ********/
+    //    ***第一个元素***
+    //    $('div:first').css('background', '#b44eaf');
+    //    ***最后一个元素***
+    //    $('div:last').css('background', '#b44eaf');
+    //    ***最后一个元素***
+    //    $('div:last').css('background', '#b44eaf');
+    //    ***排除元素***
+    //    $('div:not(.one)').css('background', '#b44eaf');
+    //    ***下标等于(index)***
+    //    $('div:eq(2)').css({'background-color': '#bfa'});
+    //    ***下标大于(index)***
+    //    $('div:gt(1)').css({'background-color': '#bfa'});
+    //    ***下标小于(index)***
+    //     $('div:lt(3)').css({'background-color': '#bfa'});
+    //    ***奇数元素***
+    //    $('div:odd').css({'background-color': '#bfa'});
+    //    ***偶数元素***
+    //    $('div:even').css({'background-color': '#bfa'});
+    //    ***标题元素***
+    //    $(':header').css({'background-color': '#bfa'});
+    //    ***焦点元素***
+    //    $(':focus').css({'background-color': '#bfa'});
+    //    ***执行动画元素***
+    //   $(':animated').css({'background-color': '#bfa'});
+
+    /********
+     内容过滤选择器
+     ********/
+    //    ***包含文本元素***
+    //         $('div:contains(为)').css({'background-color': '#bfa'});
+    //    ***内容或元素为空***
+    //    $('div:empty').css({'background-color': '#bfa'});
+    //    ***包含内容或元素***
+    //    $('div:parent').css({'background-color': '#bfa'});
+    //    ***含有某选择器或标签***
+    //    $('div:has(".mini")').css({'background-color': '#bfa'});
+
+    /********
+     可见性过滤选择器
+     ********/
+    //    ***选取所有不可见元素***
+    //    $(':hidden').show(2000).hide(1000)
+    //    ***选取所有可见元素***
+    //    $(':visible').hide(5000)
+
+    /********
+     属性过滤选择器
+     ********/
+    //    ***选取拥有此属性的元素***
+    //    $('div[title]').css({'background-color': '#bfa'});
+    //    ***选取所有属性值为value的元素***
+    //     $('div[title=test]').css({'background-color': '#bfa'});
+    //    ***选取所有属性值不为value的元素***
+    //    $('div[title!=test]').css({'background-color': '#bfa'});
+    //    ***选取所有属性值以value开头的元素***
+    //    $('div[title^=te]').css({'background-color': '#bfa'});
+    //    ***选取所有属性值以value结尾的元素***
+    //    $('div[title$=est]').css({'background-color': '#bfa'});
+    //    ***选取所有属性值包含value的元素***
+    //    $('div[title*=es]').css({'background-color': '#bfa'});
+    //    ***选取满足多个条件的元素***
+    //    $('div[id][title*=es]').css({'background-color': '#bfa'});
+    //        ***选取满足多个条件的元素***
+    //    $('div[id][title*=es]').css({'background-color': '#bfa'});
+    //    ***选取以value-为前缀的元素***
+    //    $('div[title|="en"]').css({'background-color': '#bfa'});
+    //    ***选取包含空格以及value的元素***
+    //    $('div[title~="uk"]').css({'background-color': '#bfa'});
+
+    /********
+     子元素过滤选择器
+     ********/
+        //    ***选取class为one的元素下的第二个子元素***
+    $('div.one:nth-child(2)').css('background', '#bfa');
+    //    ***选取class为one的元素下的第一个子元素***
+    $('div.one:first-child').css('background', '#bfa');
+    //    ***选取class为one的元素下的最后一个子元素***
+    $('div.one:nth-child(2)').css('background', '#bfa');
+    //    ***选取class为one的元素下唯一元素***
+    $('div.one:nth-child(2)').css('background', '#bfa');
+
+    /********
+     表单对象属性过滤选择器
+     ********/
+        //    ***选取所有可用元素***
+    $(':enabled')
+    //    ***选取所有不可用***
+    $(':disabled')
+    //    ***选取已选中元素(单选复选)***
+    $(':checked')
+    //    ***选取已选中元素(下拉列表)***
+    $(':selected')
+
+</script>
+</body>
+
+</html>

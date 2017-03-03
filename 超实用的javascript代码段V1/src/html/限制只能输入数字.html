@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>限制只能输入数字</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+
+    <style>
+    </style>
+</head>
+<body>
+<h1>限制只能输入数字</h1>
+<form>
+    <input type="number" name="numberHTML5" placeholder="HTML5只能输入数字" id="banNumberHTML5"/>
+    <input type="text" placeholder="HTML5只能输入数字" pattern=[0-9] id="patternHTML5">
+    <input type="text" name="number" placeholder="只能输入数字" id="banNumber">
+    <input type="submit" value="提交">
+    <input type="text" name="number" placeholder="正则处理" id="onlyNumber">
+</form>
+<aside>
+    <h3>pattern属性</h3>
+    <dl>
+        <dt>常用的正则表达式</dt>
+        <dd>信用卡 [0-9]{13,16}</dd>
+        <dd>银联卡 ^62[0-5]\d{13,16}$</dd>
+        <dd>Visa: ^4[0-9]{12}(?:[0-9]{3})?$</dd>
+        <dd>万事达：^5[1-5][0-9]{14}$</dd>
+        <dd>QQ号码： [1-9][0-9]{4,14}</dd>
+        <dd>手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</dd>
+        <dd>身份证：^([0-9]){7,18}(x|X)?$</dd>
+        <dd>密码：^[a-zA-Z]\w{5,17}$ 字母开头，长度在6~18之间，只能包含字母、数字和下划线</dd>
+        <dd>强密码：^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$ 包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间</dd>
+        <dd>7个汉字或14个字符：^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$
+    </dl>
+</aside>
+<script type="text/javascript">
+    window.onload = function () {
+        var onlyNumber = document.querySelector('#onlyNumber');
+        var clearNoNumber = function (tThis) {
+            var _v = tThis.value;
+            tThis.value = _v.replace(/\D/g, "");//正则处理
+        };
+        onlyNumber.onfocus = function () {
+            clearNoNumber(this);
+        };
+        onlyNumber.onkeyup = function () {
+            clearNoNumber(this);
+        };
+        onlyNumber.onblur = function () {
+            clearNoNumber(this);
+        };
+    }
+</script>
+</body>
+</html>

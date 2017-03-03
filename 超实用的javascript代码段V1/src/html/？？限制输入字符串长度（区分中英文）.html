@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>限制输入字符串长度（区分中英文）</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+
+    <style>
+    </style>
+</head>
+<body>
+<h1>限制输入字符串长度（区分中英文）</h1>
+
+<p><label>限制长度1:</label><input type="text" maxlength="6" placeholder="使用maxlength"></p>
+<p><label>限制长度2:</label><input type="text" placeholder="js来控制" id="limitLength" data-length="5" data-model="Ch" name="iname"></p>
+<script type="text/javascript">
+    window.onload = function () {
+        var limitLength = document.querySelector('#limitLength');
+        var clearNoNumber = function (tThis) {
+            var _v = tThis.value;
+            var _vLen = _v.length;
+            var dataLength = tThis.getAttribute("data-length");
+            var dataModel = tThis.getAttribute("data-model");
+            var subLen = dataLength;
+            if(_vLen>dataLength){
+                tThis.value=_v.substr(0,subLen);
+            }
+            if(remainingCharacters){
+                self.showRemainingCharacters(!_vLen?dataLength:(_vLen>dataLength?0:dataLength-_vLen),remainingCharacters);
+            }
+        };
+        limitLength.onfocus= function () {
+            clearNoNumber(this);
+        };
+        limitLength.onkeyup= function () {
+            clearNoNumber(this);
+        };
+        limitLength.onblur= function () {
+            clearNoNumber(this);
+        }
+    }
+</script>
+</body>
+</html>

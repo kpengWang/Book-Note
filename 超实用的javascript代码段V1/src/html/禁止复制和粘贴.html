@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>禁止复制和粘贴</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+
+    <style>
+    </style>
+</head>
+<body>
+<h1>禁止复制和粘贴</h1>
+<p><label>js控制禁止复制粘贴：</label><input type="text" id="banCopyPaste"></p>
+<p><label>js控制禁止复制粘贴：</label><input type="text" id="banCopyPaste1"></p>
+<p><label>js控制禁止复制粘贴：</label><input type="text" id="banCopyPaste2"></p>
+<p><label>js控制禁止复制粘贴：</label><input type="text" id="banCopyPaste3"></p>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var banCopyPaste = document.querySelector('#banCopyPaste');
+        var pp = document.querySelector('p');
+        alert(pp.length);
+
+        banCopyPaste.oncopy = function () {
+            return false;
+        };
+        banCopyPaste.onpaste = function () {
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

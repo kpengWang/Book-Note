@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+
+        #wrap {
+            width:300px;
+            height:30px;
+            line-height:30px;
+            background:#cf2d28;
+            padding:5px;
+            font-size:14px;
+            overflow:hidden;
+        }
+
+        #fonts {
+            position:relative;
+            display:inline-block;
+            width:auto;
+            white-space:nowrap;
+            padding:0 10px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+<div id="wrap">
+    <div id="fonts">113331113331113311122222222222222222222333111333111331</div>
+</div>
+
+
+<script>
+    var wrap = document.getElementById('wrap');
+    var fonts = document.getElementById('fonts');
+    var strLength = fonts.innerHTML.length;
+
+    var w1 = parseInt(getStyle(wrap, 'width'));
+    var w2 = parseInt(getStyle(fonts, 'width'));
+    var moveLeft = 0;
+    var onOff = true;
+
+    setInterval(marquees, 50);
+
+    function marquees() {
+        if (w2 > w1) {
+            fonts.style.left = moveLeft + 'px';
+            var l = parseInt(getStyle(fonts, 'left'));
+            if (onOff) {
+                if (l < (w2 - w1) * -1) {
+                    onOff = false;
+                }
+                moveLeft -= 2;
+            } else {
+                if (l >= 0) {
+                    onOff = true;
+                }
+                moveLeft += 2;
+            }
+            fonts.style.left = moveLeft + 'px';
+        } else {
+            return;
+        }
+    }
+
+    function getStyle(obj, attr) {
+        return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr];
+    }
+
+</script>
+
+
+</body>
+</html>

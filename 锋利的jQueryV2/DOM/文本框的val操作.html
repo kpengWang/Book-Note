@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文本框的val操作</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+</head>
+<body>
+<input type="text" value="请输入邮箱地址" id="address">
+<input type="text" value="请输入邮箱密码" id="password">
+<input type="button" value="登陆">
+
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+    //    对文本框操作
+    $('#address').focus(function () {
+                //  获取文本框值
+                var txt_value = $(this).val();
+                if (txt_value == this.defaultValue) {
+                    $(this).val('')
+                }
+            }
+    )
+    $('#address').blur(function () {
+                //  获取文本框值
+                var txt_value = $(this).val();
+                if (txt_value == '') {
+                    $(this).val('请输入邮箱地址')
+                }
+            }
+    )
+
+    //    对密码框操作
+    $('#password').focus(function () {
+                var txt_value = $(this).val();
+                if (txt_value == this.defaultValue) {
+                    $(this).val('');
+                }
+            }
+    )
+    $('#password').blur(function () {
+                var txt_value = $(this).val();
+                if (txt_value == '') {
+                    $(this).val('请输入邮箱密码')
+                }
+            }
+    )
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+<script type="text/javascript">
+    var current_date = new Date();
+
+    // 分
+    var thisMinute = current_date.getMinutes();
+    // 时
+    var thisHours = current_date.getHours()
+    // 星期
+    var thisWeek = current_date.getDay()
+    // 日
+    var thisDate = current_date.getDate();
+    // 月 ***末尾加1
+    var thisMonth = current_date.getMonth() + 1;
+    // 年
+    var thisYear = current_date.getFullYear();
+
+    alert(thisYear + '年' + thisMonth + '月' + thisDate + '日' + thisWeek + '星期' + thisWeek + '' + thisHours + '时' + thisMinute + '分');
+</script>
+</body>
+
+</html>

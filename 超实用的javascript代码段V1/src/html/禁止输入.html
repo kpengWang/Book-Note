@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>禁止输入</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+
+    <style>
+    </style>
+</head>
+<body>
+<h1>禁止输入</h1>
+<p><label>禁止输入1:</label><input type="text" disabled></p>
+<p><label>禁止输入2:</label><input type="text" readonly></p>
+<p><label>js控制禁止输入A：</label><input type="text" id="inhibitingInputA"></p>
+<p><label>js控制禁止输入B：</label><input type="text" id="inhibitingInputB"></p>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var _inhibitingInputA = document.querySelector("#inhibitingInputA");
+        var _inhibitingInputB = document.querySelector("#inhibitingInputB");
+
+        _inhibitingInputA.onfocus = function () { // 方法一
+            this.blur();//使之失焦
+        };
+
+        var noText = function () {  // 方法二
+            _inhibitingInputB.value = "";
+        };
+        _inhibitingInputB.onkeyup = _inhibitingInputB.onblur = noText;//强制用空字符串替换输入内容清空
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+/* reset */
+
+aside,
+audio,
+blockquote,
+body,
+button,
+canvas,
+dd,
+details,
+dl,
+dt,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+input,
+legend,
+li,
+mark,
+menu,
+nav,
+ol,
+output,
+p,
+pre,
+ruby,
+section,
+summary,
+td article,
+textarea,
+th,
+time,
+ul,
+video {
+    margin:0;
+    padding:0;
+    border:0;
+    font:inherit;
+    vertical-align:baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display:block;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font:12px/1.5 tahoma, arial, \5b8b\4f53;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size:100%;
+    font-weight:400
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family:courier new, courier, monospace
+}
+
+address,
+cite,
+dfn,
+em,
+i,
+var {
+    font-style:normal
+}
+
+:focus {
+    outline:0
+}
+
+small {
+    font-size:12px
+}
+
+dl,
+ol,
+ul {
+    list-style:none
+}
+
+a {
+    text-decoration:none;
+    cursor:pointer;
+    outline:0
+}
+
+fieldset,
+img {
+    margin:0;
+    padding:0
+}
+
+table {
+    border:0
+}
+
+p {
+    word-break:break-all;
+    word-wrap:break-word;
+    text-align:justify;
+    text-justify:inter-ideograph;
+    text-overflow:ellipsis
+}
+
+button,
+input,
+textarea {
+    border:0;
+    list-style-type:none;
+    cursor:pointer
+}
+
+input:focus {
+    outline:0
+}
+
+ins {
+    display:none;
+    text-decoration:none
+}
+
+legend {
+    color:#000
+}
+
+fieldset,
+img {
+    border:0
+}
+
+button,
+input,
+select,
+textarea {
+    font-size:100%
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content:"";
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0
+}
+
+.clear {
+    clear:both;
+    height:0;
+    line-height:0;
+    font-size:0;
+    visibility:hidden;
+    overflow:hidden
+}
+
+.clearfix:after {
+    content:" ";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden
+}
+
+.clearfix {
+    display:inline-block
+}
+
+.hide {
+    display:none
+}
+
+.show {
+    display:block
+}
+
+.fl {
+    float:left
+}
+
+.fr {
+    float:right
+}
+
+body {
+    font-size:18px;
+    color:#df9;
+    background:#333;
+    line-height:2;
+}
+
+button {
+    background:#6d8ab7;
+    color:#fff;
+    padding:5px 20px;
+    border-radius:4px;
+}
+
+button:hover {
+    background:#08c
+}

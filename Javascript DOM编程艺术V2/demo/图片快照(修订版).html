@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gellery</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        body {
+            background-color:#000;
+            text-align:center;
+        }
+
+        ul {
+            display:block;
+            width:100%
+        }
+
+        ul > li {
+            display:inline-block;
+            width:100px;
+            height:auto;
+        }
+
+        a {
+            color:#fff;
+            outline:0;
+            border:none;
+        }
+
+        a img {
+            display:block
+        }
+
+        img[src$=".jpg"] {
+            width:25%;
+            display:block;
+            margin:auto;
+        }
+
+        #desc {
+            color:#4cd964;
+            text-align:center;
+            line-height:30px;
+            height:30px;
+        }
+    </style>
+</head>
+<body>
+<h1>快照</h1>
+<ul class="clearfix" id="imagegallery">
+    <li><a href="../images/1.jpg" title="A"><img src="../images/1.jpg" alt="图片A"></a></li>
+    <li><a href="../images/2.jpg" title="B"><img src="../images/2.jpg" alt="图片B"></a></li>
+    <li><a href="../images/3.jpg" title="C"><img src="../images/3.jpg" alt="图片C"></a></li>
+    <li><a href="../images/4.jpg" title="D"><img src="../images/4.jpg" alt="图片D"></a></li>
+</ul>
+<img src="../images/placeholder.gif" id="placeholder" alt=" my image gallery">
+<p id="desc">Choose an image</p>
+<script>
+    window.onload = supportBrowser;
+
+    var suportted = document.getElementsByTagName && document.getElementById;
+    // 兼容性检测事件
+    function supportBrowser() {
+        if (!suportted) {
+            return false;
+        } else {
+            prepareGallery();
+        }
+    }
+
+    // 点击事件
+    function prepareGallery() {
+        if (!suportted)  return false;
+        var gallery = document.getElementById('imagegallery');
+        var links = gallery.getElementsByTagName('a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].title = i;
+            links[i].onclick = function () {
+                console.log(this);
+                return showPic.call(this, this) ? false : true;
+            }
+            links[i].onkeypress = links[i].onclick;
+        }
+    }
+
+
+    // 图文替换事件
+    function showPic(whichPic) {
+        if (!suportted) return false;
+//        获取图片路径
+        var source = whichPic.getAttribute('href');
+//        获取占位图片
+        var placeHolder = document.getElementById('placeholder');
+//        判断占位符标签是不是图片
+        if (placeHolder.nodeName != 'IMG') return false;
+        placeHolder.src = source;
+        if (document.getElementById('desc')) {
+//        获取图片描述
+            var text = whichPic.getAttribute('title') ? whichPic.getAttribute('title') : '';
+//        获取占位字段
+            var desc = document.getElementById('desc');
+//        判断节点类型是否是文本
+            if (desc.firstChild.nodeType == 3) {
+                desc.firstChild.nodeValue = text;
+            }
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

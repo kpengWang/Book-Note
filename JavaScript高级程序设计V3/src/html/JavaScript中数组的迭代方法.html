@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript中数组的迭代方法</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+<script>
+    var arr = [1, 2, 3, 4, 5];
+    var oBody = document.body;
+    var temp = "";
+    
+    // forEach方法
+    arr.forEach(function (item) {
+        temp += item + ",";
+        oBody.innerHTML = "forEach方法:" + temp + "<br/>";
+    });
+    
+    // map方法
+    var newArr = arr.map(function (item) {
+        return item * 2;
+    })
+    oBody.innerHTML += ("map方法：" + newArr) + "<br/>";
+    
+    // filter方法
+    var newArr = arr.filter(function (item) {
+        return item > 3;
+    })
+    oBody.innerHTML += ("filter方法：" + newArr) + "<br/>";
+    
+    // reduce方法
+    var result = arr.reduce(function (prev, next) {
+        return prev + next;
+    })
+    oBody.innerHTML += ("reduce方法：" + result) + "<br/>";
+
+    // every方法
+    var result = arr.every(function (item) {
+        return item > 0;
+    })
+    oBody.innerHTML += ("every方法：" + result) + "<br/>";
+    
+    // some方法
+    var result = arr.some(function (item) {
+        return item > 0;
+    })
+    oBody.innerHTML += ("some方法：" + result) + "<br/>";
+
+</script>
+</body>
+</html>

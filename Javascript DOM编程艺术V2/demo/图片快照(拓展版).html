@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gellery</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        body {
+            background-color:#000;
+            text-align:center
+        }
+
+        ul {
+            display:block;
+            width:100%
+        }
+
+        ul > li {
+            display:inline-block;
+            width:100px;
+            height:auto
+        }
+
+        a {
+            outline:0;
+            border:none;
+            color:#fff
+        }
+
+        a img {
+            display:block
+        }
+
+        img[src$=".jpg"] {
+            display:block;
+            margin:auto;
+            width:25%
+        }
+
+        #description {
+            height:50px;
+            color:#4cd964;
+            text-align:center;
+            line-height:50px;
+            box-shadow:0px 0px 12px #787878
+        }
+
+    </style>
+</head>
+<body>
+<h1>快照</h1>
+<ul class="clearfix" id="imagegallery">
+    <li><a href="../images/1.jpg" title="A"><img src="../images/1.jpg" alt="图片A"></a></li>
+    <li><a href="../images/2.jpg" title="B"><img src="../images/2.jpg" alt="图片B"></a></li>
+    <li><a href="../images/3.jpg" title="C"><img src="../images/3.jpg" alt="图片C"></a></li>
+    <li><a href="../images/4.jpg" title="D"><img src="../images/4.jpg" alt="图片D"></a></li>
+</ul>
+<script src="../js/wong.js"></script>
+<script src="../js/placeholder.js"></script>
+<script>
+    function after(newEle, targetEle) {
+        var parent = targetEle.parentNode;
+        if (parent.lastChild = targetEle) {
+            parent.appendChild(newEle);
+        } else {
+            parent.insertBefore(newEle, targetEle.nextSibling);
+        }
+    }
+</script>
+
+</body>
+</html>

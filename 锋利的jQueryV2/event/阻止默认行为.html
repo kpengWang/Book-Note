@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>阻止默认行为</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        label {
+            color:#c00
+        }
+    </style>
+
+</head>
+<body>
+<form action="处理事件冒泡.html">
+    <label for="username"></label>用22户名:<input type="text" id="username"><br>
+    <input type="submit" value="提222交" id="sub">
+</form>
+
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+
+    $(function () {
+        $('#sub').bind('click', function (even) {
+            var username = $('#username').val();
+            if (username == '') {
+                $('#msg').html("<p>文本框内不能为空.</p>");
+//              阻止form提交
+                even.preventDefault();
+//                return false;
+            }
+        })
+    });
+</script>
+
+</body>
+</html>

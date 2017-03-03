@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>创建并插入节点的方法</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        li:empty {
+            background:red;
+            height:30px;
+            margin-bottom:5px;
+            color:#fff;
+        }
+
+        b {
+            background:#ffffcc;
+            color:#f00;
+        }
+    </style>
+
+</head>
+<body>
+<p title="选择你最喜欢的水果">选择你最喜欢的水果</p>
+<ul>
+    <li title="苹果">苹果</li>
+    <li title="香蕉">香蕉</li>
+    <li title="橘子">橘子</li>
+</ul>
+<script src="../script/jquery-1.7.2/jquery.min.js"></script>
+<script>
+    // 获取某个元素里的文本
+    var $li = $('ul li:eq(2)');
+    var li_txt = $li.text();
+    var li_txt = $slai.text();
+    var li_txt = $lsai.text();
+    //    alert(li_txt);
+
+    // 获取某个元素内的属性值
+    var $para = $('p');
+    var p_txt = $para.attr('title');
+    //    alert(p_txt);
+
+    //创建文本和属性节点
+    var $li_1 = $('<li title="新奇士">新奇士</li>');
+    var $li_2 = $('<li title="哈密瓜">哈密瓜</li>');
+
+    //  向所匹配元素内追加内容(结束标签前)
+    //  $('ul').append($li_1).append($li_2);
+    //  $('ul').append($li_2,$li_1);
+
+    //  将单个内容追加进所匹配的元素里(结束标签前)
+    //  $($li_1).appendTo('ul');
+
+    //  向所匹配元素追加内容(起始标签后)
+    //  $('ul').prepend($li_1, $li_2);
+
+    //  将单个内容追加到所匹配的元素(起始标签后)
+    //  ($li_1).prependTo('ul');
+
+    //  向所匹配元素后添加内容
+    //    $('ul').after('<b>额外内容</b>');
+
+    // 将内容添加在所匹配的元素之后
+    //  $('<b>额外内容</b>').insertAfter('ul');
+
+    //  在所匹配元素前拼接内容
+    //  $('ul').before('<b>额外内容</b>');
+
+    //  将内容拼接到所匹配元素之前
+    //  $('<b>额外内容</b>').insertBefore('ul');
+
+</script>
+</body>
+</html>

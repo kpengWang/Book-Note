@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>限制只能输入中文</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+
+    <style>
+    </style>
+</head>
+<body>
+<h1>限制只能输入中文</h1>
+<input type="text" name="number" placeholder="正则处理只能输入中文" id="onlyCH">
+<script type="text/javascript">
+    window.onload = function () {
+        var onlyCH = document.querySelector('#onlyCH');
+        var clearNoNumber = function (tThis) {
+            var _v = tThis.value;
+            tThis.value = _v.replace(/[^\u4e00-\u9fa5]/g, "");//正则处理
+        };
+        onlyCH.onfocus = function () {
+            clearNoNumber(this);
+        };
+        onlyCH.onkeyup = function () {
+            clearNoNumber(this);
+        };
+        onlyCH.onblur = function () {
+            clearNoNumber(this);
+        };
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>超链接提示效果(图片)</title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        a {
+            color:#fff;
+        }
+
+        #tooltip {
+            width:200px;
+            color:#ffc;
+            position:absolute;
+            text-align:center;
+        }
+
+        #tooltip img {
+            width:100%
+        }
+
+        li {
+            float:left;
+            margin:10px;
+        }
+    </style>
+
+</head>
+<body>
+<ul>
+    <li>
+        <a href="../images/1.jpg" class="tooltip" title="图片一">
+            <img src="../images/1s.jpg">
+        </a>
+    </li>
+    <li>
+        <a href="../images/2.jpg" class="tooltip" title="图片二">
+            <img src="../images/2s.jpg">
+        </a>
+    </li>
+    <li>
+        <a href="../images/3.jpg" class="tooltip" title="图片三">
+            <img src="../images/3s.jpg">
+        </a>
+    </li>
+    <li>
+        <a href="../images/4.jpg" class="tooltip" title="图片四">
+            <img src="../images/4s.jpg">
+        </a>
+    </li>
+    <li>
+        <a href="../images/5.jpg" class="tooltip" title="图片五">
+            <img src="../images/5s.jpg">
+        </a>
+    </li>
+</ul>
+
+
+<script src="../script/jquery-1.11.3/jquery.min.js"></script>
+<script>
+    $(function () {
+        var x = 10;
+        var y = 20;
+        $('a.tooltip').mouseover(function (e) {
+            this.myTitle = this.title;
+//          解决原生title值同时出现
+            this.title = '';
+            var imgTitle = this.myTitle ? "<br/>" + this.myTitle : " ";
+
+//          创建<div>元素
+            var tooltip =
+                    "<div id='tooltip'> " +
+                    "<img src=' " + this.href + " ' alt='view'>"
+                    + imgTitle
+                    + "</div>";
+//            将div追加到文档里
+            $(this).parent().prepend(tooltip);
+            $('#tooltip')
+            // 设置x轴坐标和y轴坐标
+                    .css({
+                        'top': ( e.pageY + y) + 'px',
+                        'left': (e.pageX + x) + 'px'
+                    }).show('fast')
+        }).mouseout(function () {
+            this.title = this.myTitle;
+            //移除
+            $('#tooltip').remove()
+        }).mousemove(
+                function (e) {
+                    $('#tooltip')
+                            .css({
+                                'top': (e.pageY + y) + "px",
+                                'left': (e.pageX + x) + "px"
+                            });
+                });
+    })
+</script>
+</body>
+</html>
