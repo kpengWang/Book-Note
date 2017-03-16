@@ -22,11 +22,11 @@ ul,
 ol,
 li,
 
-    /* list elements 列表元素 */
+/* list elements 列表元素 */
 
 pre,
 
-    /* text formatting elements 文本格式元素 */
+/* text formatting elements 文本格式元素 */
 
 form,
 fieldset,
@@ -35,11 +35,12 @@ button,
 input,
 textarea,
 
-    /* form elements 表单元素 */
+/* form elements 表单元素 */
 
 th,
 td,
-    /* table elements 表格元素 */
+
+/* table elements 表格元素 */
 
 article,
 aside,
@@ -60,14 +61,15 @@ time,
 mark,
 audio,
 video
-    /*html5新元素*/
+/*html5新元素*/
 
 {
-    margin:0;
-    padding:0;
-    border:0;
-    font-size:100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
 }
+
 
 /* ------- HTML5 display-role mb for older browsers ------- */
 
@@ -81,8 +83,9 @@ header,
 menu,
 nav,
 section {
-    display:block;
+    display: block;
 }
+
 
 /** 设置默认字体 **/
 
@@ -91,10 +94,10 @@ button,
 input,
 select,
 textarea
-    /* for ie */
+/* for ie */
 
 {
-    font:12px/1.5 tahoma, arial, \5b8b\4f53;
+    font: 12px/1.5 tahoma, arial, \5b8b\4f53;
     /*font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;*/
 }
 
@@ -104,8 +107,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-size:100%;
-    font-weight:400
+    font-size: 100%;
+    font-weight: 400
 }
 
 address,
@@ -113,8 +116,9 @@ cite,
 dfn,
 em,
 var {
-    font-style:normal;
+    font-style: normal;
 }
+
 
 /* 将斜体扶正 */
 
@@ -122,14 +126,16 @@ code,
 kbd,
 pre,
 samp {
-    font-family:courier new, courier, monospace;
+    font-family: courier new, courier, monospace;
 }
+
 
 /* 统一等宽字体 */
 
 small {
-    font-size:12px;
+    font-size: 12px;
 }
+
 
 /* 小于 12px 的中文很难阅读，让 small 正常化 */
 
@@ -139,97 +145,100 @@ dfn,
 em,
 var,
 i {
-    font-style:normal
+    font-style: normal
 }
 
 :focus {
-    outline:0
+    outline: 0
 }
 
 small {
-    font-size:12px
+    font-size: 12px
 }
 
 ul,
 ol,
 dl {
-    list-style:none
+    list-style: none
 }
 
 a {
-    text-decoration:none;
-    cursor:pointer;
-    outline:0;
+    text-decoration: none;
+    cursor: pointer;
+    outline: 0;
 }
 
 fieldset,
 img {
-    border:0;
-    margin:0;
-    padding:0
+    border: 0;
+    margin: 0;
+    padding: 0
 }
 
 a,
 img {
-    -webkit-touch-callout:none;
+    -webkit-touch-callout: none;
     /* 禁止长按链接与图片弹出菜单 */
 }
 
 html,
 body {
-    -webkit-user-select:none;
+    -webkit-user-select: none;
     /* 禁止选中文本（如无文本选中需求，此为必选项） */
-    user-select:none;
+    user-select: none;
 }
 
 button,
 input,
 select,
 textarea {
-    font-size:100%
+    font-size: 100%
 }
 
 table {
-    border:0;
-    border-collapse:collapse;
-    border-spacing:0;
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 p {
-    word-wrap:break-word;
-    text-align:justify;
-    text-overflow:ellipsis
+    word-wrap: break-word;
+    text-align: justify;
+    text-overflow: ellipsis
 }
 
 input,
 button,
 textarea {
-    border:0;
-    list-style-type:none;
-    cursor:pointer
+    border: 0;
+    list-style-type: none;
+    cursor: pointer
 }
 
 input:focus {
-    outline:none;
+    outline: none;
 }
 
 ins {
-    display:none;
-    text-decoration:none
+    display: none;
+    text-decoration: none
 }
+
 
 /** 重置表单元素 **/
 
 legend {
-    color:#000;
+    color: #000;
 }
+
 
 /* for ie6 */
 
 fieldset,
 img {
-    border:0;
+    border: 0;
 }
+
 
 /* img 搭车：让链接里的 img 无边框 */
 
@@ -237,8 +246,9 @@ button,
 input,
 select,
 textarea {
-    font-size:100%;
+    font-size: 100%;
 }
+
 
 /* 使得表单元素在 ie 下能继承字体大小 */
 
@@ -246,57 +256,57 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content:'';
+    content: '';
 }
 
 table {
-    border-collapse:collapse;
-    border-spacing:0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .clear {
-    clear:both;
-    height:0;
-    line-height:0;
-    font-size:0;
-    visibility:hidden;
-    overflow:hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    visibility: hidden;
+    overflow: hidden;
 }
 
 .clearfix:after {
-    content:" ";
-    display:block;
-    height:0;
-    clear:both;
-    visibility:hidden
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
 }
 
 .hide {
-    display:none
+    display: none
 }
 
 .show {
-    display:block
+    display: block
 }
 
 .fl {
-    float:left
+    float: left
 }
 
 .fr {
-    float:right
+    float: right
 }
 
 body {
-    font-family:"微软雅黑", sans-serif;
-    letter-spacing:0;
-    font-weight:400;
-    font-style:normal;
-    text-rendering:optimizeLegibility;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    -moz-font-feature-settings:"liga" on;
-    color:rgba(0, 0, 0, .8);
-    font-size:18px;
-    line-height:1.4;
+    font-family: "微软雅黑", sans-serif;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga" on;
+    color: rgba(0, 0, 0, .8);
+    font-size: 18px;
+    line-height: 1.4;
 }

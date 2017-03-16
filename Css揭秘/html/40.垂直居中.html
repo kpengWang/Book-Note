@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>40.垂直居中</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <style>
+        /*方案一：未知宽高.利用vh视窗单位和translateY来处理*/
+        
+        main {
+            background: #f65;
+            padding: 10px;
+            width: 300px;
+            margin: 50vh auto 0;
+            transform: translateY(-50%)
+        }
+        /*方案二：利用绝对定位以及translate来处理*/
+        
+        main {
+            background: #f65;
+            padding: 10px;
+            width: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%)
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <h1>Am,I centered yet?</h1>
+        <p>Center me,please!</p>
+    </main>
+
+</body>
+
+</html>
