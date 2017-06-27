@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>1.2 多态</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        var makeSoundPro = function(animal) {
+            if (animal instanceof Duck) {
+                console.log('嘎嘎嘎');
+            } else if (animal instanceof Chicken) {
+                console.log("咯咯哒");
+            }
+        }
+
+        var Duck = function() {};
+        var Chicken = function() {};
+
+        // makeSoundPro(new Duck());
+
+        // 面向对象的多态
+        var Duck = function() {},
+             Chicken = function() {},
+             Dog = function() {},
+             mackSoundObj = function(animal) {  
+                animal.sound();
+            };
+        Duck.prototype.sound = function() {
+            console.log('嘎嘎嘎');
+        };
+        Chicken.prototype.sound = function() {
+            console.log('咯咯哒');
+        };
+        Dog.prototype.sound = function() {
+            console.log('汪汪汪');
+        };
+        mackSoundObj(new Duck());
+        mackSoundObj(new Chicken());
+        mackSoundObj(new Dog());
+    </script>
+</body>
+
+</html>
