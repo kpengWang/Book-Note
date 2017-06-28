@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>2.1.2 丢失的this</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+
+    <div id="div1">
+        这是一个div
+    </div>
+    <script>
+        var obj = {
+            myName: 'sven',
+            getName: function() {
+                console.log(this);
+                return this.myName;
+            }
+        };
+        var getName2 = obj.getName;
+        // console.log(obj.getName()); // this指向obj,输出：'sven'
+        // console.log(getName2()); // this指向window,输出：undefined
+
+
+        var getId = function(id) {
+            return document.getElementById(id);
+        };
+        console.log(getId('div1').id);
+
+        // var getId = document.getElementById;
+
+        // 利用 apply 把 document 当作 this 传入 getId 函数，帮助“修正” this 
+        var getId = (function(obj) {
+            return function() {
+                return obj.apply(document, arguments);
+            }
+        })(document.getElementById);
+        console.log(getId('div1').id)
+    </script>
+</body>
+
+</html>

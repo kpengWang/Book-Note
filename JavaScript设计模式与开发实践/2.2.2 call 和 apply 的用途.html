@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>2.2.2 call 和 apply 的用途</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <div id="div1">这是一个单纯的div</div>
+    <script>
+        /*改变 this 指向*/
+        var obj1 = {
+            name: 'steven'
+        };
+        var obj2 = {
+            name: 'anne'
+        };
+
+        window.name = 'window';
+
+        var getName = function(name) {
+            console.log(this.name);
+        };
+        // getName(); //'window'
+        // getName.apply(obj1); //'steven'
+        // getName.apply(obj2); //'anne'
+
+
+        document.getElementById('div1').onclick = function() {
+            var foo = function() {
+                alert(this.id);
+            }
+            foo.apply(this);
+            return foo();
+        };
+
+        /*Function.prototype.bind*/
+        // Function.prototype.bind = function(context) {
+        //     var self = this; //保存原函数
+        //     return function() {
+        //         // 这句代码才是执行原来的 func 函数，并且指定 context对象为 func 函数体内的 this ，也是我们想修正的 this 对象
+        //         return self.apply(context, arguments);
+        //     }
+        // }
+        // var obj = {
+        //     name: 'steven'
+        // };
+        // var func = function() {
+        //     alert(this.name); //输出'steven'
+        // }.bind(obj);
+
+        // func();
+
+        //带参
+        Function.prototype.bind = function() {
+            var self = this, // 保存原函数
+                context = [].shift.call(arguments), // 需要绑定的 this 上下文
+                args = [].slice.call(arguments); // 剩余的参数转成数组
+            return function() { // 返回一个新的函数
+                return self.apply(context, [].concat.call(args, [].slice.call(arguments)));
+                // 执行新的函数的时候，会把之前传入的 context 当作新函数体内的 this
+                // 并且组合两次分别传入的参数，作为新函数的参数
+            }
+        };
+        var obj = {
+            name: 'sven'
+        };
+        var func = function(a, b, c, d) {
+            alert(this.name); // 输出：sven
+            alert([a, b, c, d]) // 输出：[ 1, 2, 3, 4 ]
+        }.bind(obj, 1, 2);
+        // func(3, 4);
+
+        /*借用其他对象的方法*/
+        var A = function(name) {
+            this.name = name;
+        };
+
+        var B = function() {
+            A.apply(this, arguments);
+        };
+
+        B.prototype.getName = function() {
+            return this.name;
+        }
+
+        var b = new B('steven');
+        // console.log(b.getName());
+
+        // 往 arguments中添加一个新的元素，通常会借用Array.prototype.push
+        (function() {
+            Array.prototype.push.call(arguments, 3);
+            console.log(arguments);
+        })(1, 2, 5, 'c');
+    </script>
+</body>
+
+</html>

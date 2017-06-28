@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>2.2.1 call 和 apply 的区别</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        var func = function(a, b, c) {
+            alert([a, b, c]); // 输出 [ 1, 2, 3 ]
+        };
+        func.apply(null, [1, 2, 3]);
+
+
+        var func = function(a, b, c) {
+            alert([a, b, c]); // 输出 [ 1, 2, 3 ]
+        };
+        func.call(null, 1, 2, 3);
+    </script>
+</body>
+
+</html>
