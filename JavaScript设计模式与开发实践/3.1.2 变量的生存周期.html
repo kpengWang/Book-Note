@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>3.1.2 变量的生命周期</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <script>
+        var foo = function() {
+            var a = 1;
+            return function() {
+                a++;
+                alert(a);
+            }
+        }
+
+        // var f = foo();
+        // // f 返回了一个匿名函数的引用，它可以访问到 func()被调用时产生的环境，而局部变量 a 一直处在这个环境里
+        // f(); // 输出：2
+        // f(); // 输出：3
+        // f(); // 输出：4
+        // f(); // 输出：5
+
+
+        var nodes = document.getElementsByTagName('div');
+        for (var i = 0, len = nodes.length; i < len; i++) {
+            (function(i) {
+                nodes[i].addEventListener('click', function() {
+                    console.log(i);
+                });
+            })(i);
+        };
+
+
+        // var Type = {};
+        // for (var i = 0, type; type = ['String', 'Array', 'Number'][i++];) {
+        //     (function(type) {
+        //         Type['is' + type] = function(obj) {
+        //             return Object.prototype.toString.call(obj) === '[object' + type + ']';
+        //         }
+        //     })(type);
+        // };
+        // Type.isArray([]);
+    </script>
+</body>
+
+</html>
