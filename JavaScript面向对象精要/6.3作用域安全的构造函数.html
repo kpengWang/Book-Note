@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>6.3作用域安全的构造函数</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        // 当自己是被new 调用时 则设置name属性
+        //否则 就以new 递归调用自己来为对象创建正确的实例
+        function Person(name) {
+            if (this instanceof Person) {
+                this.name = name;
+            } else {
+                return new Person(name);
+            }
+        }
+
+        var person1 = new Person("Nicholas");
+        var person2 = Person('Antares');
+        console.log(person1 instanceof Person); // true
+        console.log(person2 instanceof Person); //true
+    </script>
+</body>
+
+</html>

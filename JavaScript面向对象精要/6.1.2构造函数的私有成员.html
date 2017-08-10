@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>6.1.2构造函数的私有成员</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            var age = 25;
+            this.name = name;
+
+            this.getAge = function() {
+                return age;
+            };
+            this.growOlder = function() {
+                age++;
+            };
+        }
+
+        var person = new Person("Antares");
+        console.log(person.name);
+        console.log(person.getAge());
+        person.growOlder();
+        console.log(person.getAge());
+    </script>
+
+</body>
+
+</html>

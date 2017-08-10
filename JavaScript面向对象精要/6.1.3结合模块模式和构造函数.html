@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>6.1.3结合模块模式和构造函数</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <script>
+        var Person = (function() {
+            var age = 25;
+
+            function InnerPerson(name) {
+                this.name = name;
+            }
+
+            InnerPerson.prototype.getAge = function() {
+                return age;
+            }
+            InnerPerson.prototype.growOlder = function() {
+                age++;
+            }
+            return InnerPerson;
+        }())
+
+
+        var person1 = new Person("Nicholas");
+        var person2 = new Person("Antares");
+
+        console.log(person1.name);
+        console.log(person1.getAge());
+        console.log(person2.name);
+        console.log(person2.getAge());
+
+        person1.growOlder();
+        console.log(person1.getAge());
+        console.log(person2.getAge());
+    </script>
+</body>
+
+</html>

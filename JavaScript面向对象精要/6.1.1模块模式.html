@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>6.1.1模块模式</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        // 模块模式
+        var person = (function() {
+            var age = 25;
+            return {
+                name: "Nicholas",
+                getAge: function() {
+                    return age;
+                },
+                growOlder: function() {
+                    age++;
+                }
+            }
+        }())
+
+        //暴露模块模式
+        var person2 = (function() {
+            var age = 25;
+
+            var opt = {
+                name: "Nicholas",
+                getAge: getAge,
+                growOlder: growOlder
+            }
+
+            function getAge() {
+                return age;
+            }
+
+            function growOlder() {
+                age++;
+            }
+            return opt;
+        }())
+
+
+        console.log(person2.name); //"Nicholas"
+        console.log(person2.getAge()); //25
+        person2.growOlder();
+        console.log(person2.getAge()); //26
+    </script>
+</body>
+
+</html>
