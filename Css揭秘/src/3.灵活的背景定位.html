@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>3.灵活的背景定位</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        main {
+            display: flex
+        }
+        
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            flex: 2;
+        }
+        
+        .div1 {
+            background: url(http://csssecrets.io/images/code-pirate.svg) no-repeat right bottom #58a;
+            background-position: right 20px bottom 10px;
+        }
+        
+        .div2 {
+            background: url(http://csssecrets.io/images/code-pirate.svg) no-repeat right bottom #58a;
+            background-position: right 20px bottom 10px;
+            padding: 50px;
+            background-origin: content-box
+        }
+        
+        .div3 {
+            background: url(http://csssecrets.io/images/code-pirate.svg) no-repeat #58a;
+            background-position: calc(100% - 10px) calc(100% - 10px);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="div1">
+            无内间距
+        </div>
+        <div class="div2">
+            div自带内间距
+        </div>
+        <div class="div3">
+            使用 calc()实现
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>2.多重边框</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        div {
+            margin: 25px;
+            float: left;
+            width: 100px;
+            height: 60px;
+            padding: 10px;
+            color: #fff;
+            font-size: 14px;
+            background: yellowgreen;
+        }
+        
+        .div1 {
+            box-shadow: 0 0 10px #655;
+        }
+        
+        .div2 {
+            box-shadow: 0 0 10px #655, 0 0 0 15px deeppink;
+        }
+        
+        .div3 {
+            box-shadow: 0 0 10px #655, 0 0 0 15px deeppink, 0 2px 5px 15px rgba(0, 0, 0, .6);
+        }
+        
+        .div4 {
+            box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink, 0 2px 5px 15px rgba(0, 0, 0, .6);
+        }
+        
+        .div5 {
+            border: 5px solid #655;
+            outline: 1px dashed #fff;
+            outline-offset: -10px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        box-shadow实现
+    </div>
+    <div class="div2">
+        box-shadow实现
+    </div>
+    <div class="div3">
+        box-shadow实现
+    </div>
+    <div class="div4">
+        box-shadow实现
+    </div>
+    <div class="div5">
+        Outline实现
+    </div>
+</body>
+
+</html>
