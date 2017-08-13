@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>5.条纹背景</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <style>
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        
+        h2 {
+            line-height: 40px;
+            color: #fff;
+            background: #4b4b4b;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        div {
+            height: 120px;
+            margin: 10px;
+            flex: 0 0 180px;
+        }
+        
+        .div1 {
+            background: linear-gradient(#fb3, #58a)
+        }
+        
+        .div2 {
+            background: linear-gradient(#fb3 50%, #58a 50%)
+        }
+        
+        .div3 {
+            background: linear-gradient(#fb3 50%, #58a 50%);
+            background-size: 100% 30px
+        }
+        
+        .div4 {
+            background: linear-gradient(#fb3 30%, #58a 30%);
+            background-size: 100% 30px
+        }
+        
+        .div5 {
+            background: linear-gradient(#fb3 33.3333%, #58a 0, #58a 66.6666%, yellowgreen 0);
+            background-size: 100% 45px
+        }
+        
+        .div6 {
+            background: linear-gradient(to right, #fb3 50%, #58a 0);
+            background-size: 34px 100%
+        }
+        
+        .div7 {
+            background: linear-gradient(45deg, #fb3 50%, #58a 0);
+            background-size: 30px 30px
+        }
+        
+        .div8 {
+            background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);
+            background-size: 30px 30px
+        }
+        
+        .div9 {
+            background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);
+            background-size: 42.426406871px 42.426406871px;
+        }
+        
+        .div10 {
+            background: repeating-linear-gradient(45deg, #fb3, #58a 30px);
+        }
+        
+        .div11 {
+            background: repeating-linear-gradient(45deg, #fb3, #fb3 15px, #58a 0, #58a 30px)
+        }
+        
+        .div12 {
+            background: repeating-linear-gradient(60deg, #fb3, #fb3 15px, #58a 0, #58a 30px)
+        }
+        
+        .div13 {
+            background: repeating-linear-gradient(30deg, #79b, #79b 15px, #58a 0, #58a 30px)
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2>横向渐变</h2>
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+        <div class="div4"></div>
+        <div class="div5"></div>
+        <h2>纵向渐变</h2>
+        <div class="div6"></div>
+        <h2>斜向渐变</h2>
+        <div class="div7"></div>
+        <div class="div8"></div>
+        <div class="div9"></div>
+        <div class="div10"></div>
+        <div class="div11"></div>
+        <div class="div12"></div>
+        <div class="div13"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+
+    </main>
+</body>
+
+</html>

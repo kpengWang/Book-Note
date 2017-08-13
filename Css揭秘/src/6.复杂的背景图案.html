@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>6.复杂的背景图案</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <style>
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        
+        h2 {
+            line-height: 40px;
+            color: #fff;
+            background: #4b4b4b;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        div {
+            height: 120px;
+            margin: 10px;
+            flex: 0 0 180px;
+        }
+        
+        .div1 {
+            background: #fff;
+            background-image: linear-gradient(90deg, rgba(200, 0, 0, .5) 50%, transparent 0), linear-gradient(rgba(200, 0, 0, .5) 50%, transparent 0);
+            background-size: 30px 30px
+        }
+        
+        .div2 {
+            background: #58a;
+            background-image: linear-gradient(#fff 1px, transparent 0), linear-gradient(90deg, #fff 1px, transparent 0);
+            background-size: 15px 15px
+        }
+        
+        .div3 {
+            background: #58a;
+            background-image: linear-gradient(#fff 2px, transparent 0), linear-gradient(90deg, #fff 2px, transparent 0), linear-gradient(hsla(0, 0%, 100%, .3) 1px, transparent 0), linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px, transparent 0);
+            background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px
+        }
+        
+        .div4 {
+            background: #655;
+            background-image: radial-gradient(tan 30%, transparent 0);
+            background-size: 20px 20px;
+        }
+        
+        .div5 {
+            background: #655;
+            background-image: radial-gradient(tan 30%, transparent 0), radial-gradient(tan 30%, transparent 0);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        
+        .div6 {
+            background: #eee;
+            background-image: linear-gradient(45deg, #bbb 25%, transparent 0), linear-gradient(45deg, transparent 75%, #bbb 0), linear-gradient(45deg, #bbb 25%, transparent 0), linear-gradient(45deg, transparent 75%, #bbb 0);
+            background-position: 0 0, 15px 15px, 15px 15px, 30px 30px;
+            background-size: 30px 30px, 30px 30px
+        }
+        
+        .div7 {
+            background: #eee;
+            background-image: linear-gradient(45deg, #bbb 25%, transparent 0, transparent 75%, #bbb 0), linear-gradient(45deg, #bbb 25%, transparent 0, transparent 75%, #bbb 0);
+            background-position: 0, 0, 15px, 15px;
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="background:#58a;margin-bottom:20px"><a style="color:#fff;" href="http://lea.verou.me/css3patterns/">http://lea.verou.me/css3patterns/</a></h2>
+    <main>
+        <h2>网格</h2>
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+        <h2>波点</h2>
+        <div class="div4"></div>
+        <div class="div5"></div>
+        <h2>棋盘</h2>
+        <div class="div6"></div>
+        <div class="div7"></div>
+    </main>
+</body>
+
+</html>
