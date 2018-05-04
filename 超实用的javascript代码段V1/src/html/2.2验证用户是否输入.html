@@ -1,54 +1,54 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>验证用户是否输入</title>
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 
 </head>
+
 <body>
-<h1>验证用户是否输入</h1>
-<input type="text" name="" value="    验证   " id="strs">
-<input type="button" name="" value="过滤" id="rstrsBtn">
-<input type="button" name="" value="验证是否为空" id="isContent">
+    <h1>验证用户是否输入</h1>
+    <input type="text" name="" value="    验证   " id="strs">
+    <input type="button" name="" value="过滤" id="rstrsBtn">
+    <input type="button" name="" value="验证是否为空" id="isContent">
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
+        window.onload = function() {
+            //判断是否为空
+            var _strs = document.querySelector('#strs');
+            var _isContent = document.querySelector('#isContent');
+            _isContent.onclick = function() {
+                if (!_strs.value.replace(/(^\s+)|(\s+$)/g, "")) {
+                    //            if(_strs.value.length===0){   //直接判断字符串长度
+                    alert("空！");
+                } else {
+                    alert("非空！");
+                }
+            };
 
-
-
-    window.onload = function () {
-        //判断是否为空
-        var _strs = document.querySelector('#strs');
-        var _isContent = document.querySelector('#isContent');
-        _isContent.onclick = function () {
-          if(!_strs.value.replace(/(^\s+)|(\s+$)/g,"")){
-//            if(_strs.value.length===0){   //直接判断字符串长度
-                alert("空！");
-            }else {
-                alert("非空！");
+            //过滤动作 过滤输入框前后空格
+            var rstrsBtn = document.querySelector('#rstrsBtn');
+            rstrsBtn.onclick = function() {
+                _strs.value = _strs.value.replace(/(^\s+)|(\s+$)/g, ""); //方法一
+                //          _strs.value = _strs.value.replace(/^(\s|\u00A0)+|(\s|u00A0)+$/g,"");//方法二
+                console.log(_strs.value.length)
             }
         };
 
-        //过滤动作
-        var rstrsBtn = document.querySelector('#rstrsBtn');
-        rstrsBtn.onclick = function () {
-            _strs.value = _strs.value.replace(/(^\s+)|(\s+$)/g,""); //方法一
-//          _strs.value = _strs.value.replace(/^(\s|\u00A0)+|(\s|u00A0)+$/g,"");//方法二
-            console.log( _strs.value.length)
+
+        function isContent(chars) {
+            return !chars ? true : false;
+            return chars.length == 0 ? true : false;
         }
-    };
-
-
-    function isContent(chars) {
-        return !chars ? true : false;
-        return chars.length == 0 ? true : false;
-    }
-</script>
+    </script>
 </body>
+
 </html>

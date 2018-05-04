@@ -13,7 +13,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-.vscode
 
 # Windows shortcuts
 *.lnk
@@ -46,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+.idea
+.vscode
+.project
