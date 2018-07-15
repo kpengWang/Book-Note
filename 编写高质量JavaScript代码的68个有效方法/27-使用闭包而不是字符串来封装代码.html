@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    function repeat(n, action) {
+      let i = 0
+      for (; i < n; i++) {
+        action()
+      }
+    }
+
+    function benchmark() {
+      let start = [],
+        end = [],
+        times = []
+
+      repeat(1000, () => {
+        start.push(Date.now())
+        // f()
+        end.push(Date.now())
+      })
+      let i = 0
+      let n = start.length
+      for (; i < n; i++) {
+        times[i] = end[i] - start[i]
+      }
+      console.log(times)
+      return times
+    }
+    benchmark()
+  </script>
+</body>
+
+</html>
