@@ -1,200 +1,205 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>左右轮播切换</title>
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="../style/reset.css">
-    <style>
-        .v_show {
-            width:800px;
-            height:400px;
-            background:#fff;
-            margin:auto
-        }
+  <meta charset="UTF-8">
+  <title>左右轮播切换</title>
+  <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="../style/reset.css">
+  <style>
+    .v_show {
+      width: 800px;
+      height: 400px;
+      background: #fff;
+      margin: auto
+    }
 
-        .v_caption {
-            padding:0 20px;
-            height:80px;
-            line-height:80px;
-            background:#a9bacb;
-            color:#fff;
-        }
+    .v_caption {
+      padding: 0 20px;
+      height: 80px;
+      line-height: 80px;
+      background: #a9bacb;
+      color: #fff;
+    }
 
-        .v_caption h2 {
-            display:inline-block;
-            float:left
-        }
+    .v_caption h2 {
+      display: inline-block;
+      float: left
+    }
 
-        .v_caption .highlight_tip {
-            height:80px;
-            padding:0 20px;
-            text-align:center;
-            display:inline-block;
-            float:left;
-        }
+    .v_caption .highlight_tip {
+      height: 80px;
+      padding: 0 20px;
+      text-align: center;
+      display: inline-block;
+    }
 
-        .v_caption .highlight_tip span {
-            float:left;
-            display:inline-block;
-            cursor:pointer;
-            width:4px;
-            height:4px;
-            background:#6d8ab7;
-            border-radius:50%;
-            margin:38px 10px 38px 0;
-            text-indent:-99999px;
-        }
+    .v_caption .highlight_tip span {
+      display: inline-block;
+      cursor: pointer;
+      width: 4px;
+      height: 4px;
+      background: #6d8ab7;
+      border-radius: 50%;
+      margin: 38px 10px 38px 0;
+      text-indent: -99999px;
+    }
 
-        .v_caption .highlight_tip span.current {
-            background:#ffc
-        }
+    .v_caption .highlight_tip span.current {
+      background: #ffc
+    }
 
-        .v_caption .change_btn {
-            font-size:12px;
-            float:left
-        }
+    .v_caption .change_btn {
+      font-size: 12px;
+      float: left
+    }
 
-        .v_caption .change_btn span {
-            background:#fff;
-            color:#000;
-            padding:5px 10px;
-            border-radius:5px;
-            cursor:pointer;
-        }
+    .v_caption .change_btn span {
+      background: #fff;
+      color: #000;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-        .v_caption em:last-child {
-            float:right;
-            color:#0087f1;
-            font-size:12px;
-        }
+    .v_caption em:last-child {
+      float: right;
+      color: #0087f1;
+      font-size: 12px;
+    }
 
-        .v_content {
-            overflow:hidden;
-            width:800px;
-            height:320px;
-            position:relative
-        }
+    .v_content {
+      overflow: hidden;
+      width: 800px;
+      height: 320px;
+      position: relative
+    }
 
-        .v_content_list {
-            position:absolute;
-            left:0;
-            width:2000px
-        }
+    .v_content_list {
+      position: absolute;
+      left: 0;
+      width: 2000px
+    }
 
-        .v_content li {
-            float:left;
-            width:200px;
-            text-align:center;
-            height:280px;
-            padding:20px 0;
-            color:#333;
-            font-size:14px;
-        }
+    .v_content li {
+      float: left;
+      width: 200px;
+      text-align: center;
+      height: 280px;
+      padding: 20px 0;
+      color: #333;
+      font-size: 14px;
+    }
 
-        .v_content li a {
-            color:#333;
-        }
-    </style>
+    .v_content li a {
+      color: #333;
+    }
+  </style>
 
 </head>
+
 <body>
-<div class="v_show">
+  <div class="v_show">
     <div class="v_caption clearfix">
-        <h2 class="cartoon" title="轮播效果">轮播效果</h2>
-        <div class="highlight_tip"><span class="current">1</span><span>2</span></div>
-        <div class="change_btn">
-            <span class="prev">上一页</span>
-            <span class="next">下一页</span>
-        </div>
-        <em><a href="#">更多</a></em>
+      <h2 class="cartoon" title="轮播效果">轮播效果</h2>
+      <div class="highlight_tip"><span class="current">1</span><span>2</span></div>
+      <div class="change_btn">
+        <span class="prev">上一页</span>
+        <span class="next">下一页</span>
+      </div>
+      <em><a href="#">更多</a></em>
     </div>
     <div class="v_content">
-        <div class="v_content_list">
-            <ul>
-                <li><a href="#"><img src="../images/1s.jpg"> </a><h4><a href="#">图片1</a></h4>
-                    <span>播放:<em>29.324</em></span>
-                </li>
-                <li><a href="#"><img src="../images/2s.jpg"> </a><h4><a href="#">图片2</a></h4>
-                    <span>播放:<em>19.33</em></span>
-                </li>
-                <li><a href="#"><img src="../images/3s.jpg"> </a><h4><a href="#">图片3</a></h4>
-                    <span>播放:<em>16.127</em></span>
-                </li>
-                <li><a href="#"><img src="../images/4s.jpg"> </a><h4><a href="#">图片4</a></h4>
-                    <span>播放:<em>5.324</em></span>
-                </li>
-                <li><a href="#"><img src="../images/5s.jpg"> </a><h4><a href="#">图片5</a></h4>
-                    <span>播放:<em>73.24</em></span>
-                </li>
-            </ul>
-        </div>
+      <div class="v_content_list">
+        <ul>
+          <li><a href="#"><img src="../images/1s.jpg"> </a>
+            <h4><a href="#">图片1</a></h4>
+            <span>播放:<em>29.324</em></span>
+          </li>
+          <li><a href="#"><img src="../images/2s.jpg"> </a>
+            <h4><a href="#">图片2</a></h4>
+            <span>播放:<em>19.33</em></span>
+          </li>
+          <li><a href="#"><img src="../images/3s.jpg"> </a>
+            <h4><a href="#">图片3</a></h4>
+            <span>播放:<em>16.127</em></span>
+          </li>
+          <li><a href="#"><img src="../images/4s.jpg"> </a>
+            <h4><a href="#">图片4</a></h4>
+            <span>播放:<em>5.324</em></span>
+          </li>
+          <li><a href="#"><img src="../images/5s.jpg"> </a>
+            <h4><a href="#">图片5</a></h4>
+            <span>播放:<em>73.24</em></span>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
-<script src="../script/jquery-1.7.2/jquery.min.js"></script>
-<script>
+  </div>
+  <script src="../script/jquery-1.11.3/jquery.min.js"></script>
+  <script>
     $(function () {
 
-//      初始化  当前的版面
-        var page = 1;
-//      规定每页的图片数量
-        var i = 4;
+      //      初始化  当前的版面
+      var page = 1;
+      //      规定每页的图片数量
+      var i = 4;
 
-//      获取各节点
-        var $parent = $('div.v_show');
-        var $v_content = $parent.find('.v_content');
-        var $v_show = $parent.find('.v_content_list');
+      //      获取各节点
+      var $parent = $('div.v_show');
+      var $v_content = $parent.find('.v_content');
+      var $v_show = $parent.find('.v_content_list');
 
-//      获取需应用数据
-        var v_width = $v_content.width();
+      //      获取需应用数据
+      var v_width = $v_content.width();
 
-//      总的图片数量
-        var len = $v_show.find('li').length;
-//      获取版面数量,向上取整
-        var page_count = Math.ceil(len / i);
+      //      总的图片数量
+      var len = $v_show.find('li').length;
+      //      获取版面数量,向上取整
+      var page_count = Math.ceil(len / i);
 
-//      点击下一个
-        $('span.next').click(
-                function () {
-//                  判断"滑动区域"是否处于动画
-                    if (!$v_show.is(':animated')) {
-//                      是否是最后一个版面
-                        if (page == page_count) {
-                            $v_show.animate({left: '0px'}, 'slow');
-                            page = 1;
-                        } else {
-//                          改变left值,达到每次切换一个版面
-                            $v_show.animate({left: '-=' + v_width}, 'slow');
-                            page++;
-                        }
-//                      指示圆点随着当前版面位置的切换
-                        $('.highlight_tip').find('span').eq(page - 1).addClass('current').siblings().removeClass('current');
-                    }
-                }
-        );
+      //      点击下一个
+      $('span.next').click(
+        function () {
+          //                  判断"滑动区域"是否处于动画
+          if (!$v_show.is(':animated')) {
+            //                      是否是最后一个版面
+            if (page == page_count) {
+              $v_show.animate({ left: '0px' }, 'slow');
+              page = 1;
+            } else {
+              //                          改变left值,达到每次切换一个版面
+              $v_show.animate({ left: '-=' + v_width }, 'slow');
+              page++;
+            }
+            //                      指示圆点随着当前版面位置的切换
+            $('.highlight_tip').find('span').eq(page - 1).addClass('current').siblings().removeClass('current');
+          }
+        }
+      );
 
-//      点击上一个
-        $('span.prev').click(
-                function () {
-//                  判断"滑动区域"是否处于动画
-                    if (!$v_show.is(':animated')) {
-                        if (page == 1) {
-                            $v_show.animate({left: '-=' + v_width * (page_count - 1)}, 'slow');
-                            page = page_count;
-                        } else {
-                            $v_show.animate({left: '+=' + v_width}, 'slow');
-                            page--;
-                        }
-                        $('.highlight_tip').find('span').eq(page - 1).addClass('current').siblings().removeClass('current');
-                    }
-                }
-        );
+      //      点击上一个
+      $('span.prev').click(
+        function () {
+          //                  判断"滑动区域"是否处于动画
+          if (!$v_show.is(':animated')) {
+            if (page == 1) {
+              $v_show.animate({ left: '-=' + v_width * (page_count - 1) }, 'slow');
+              page = page_count;
+            } else {
+              $v_show.animate({ left: '+=' + v_width }, 'slow');
+              page--;
+            }
+            $('.highlight_tip').find('span').eq(page - 1).addClass('current').siblings().removeClass('current');
+          }
+        }
+      );
     })
-
-</script>
+  </script>
 </body>
+
 </html>
