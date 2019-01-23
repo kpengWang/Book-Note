@@ -57,7 +57,6 @@ function styleHeaderSiblings(tag, theClass) {
     }
 }
 
-
 //检测表单类型
 function inputSupportsTyle(type) {
     if (!document.createElement) return false;

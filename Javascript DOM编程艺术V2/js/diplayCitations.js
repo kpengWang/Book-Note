@@ -2,9 +2,9 @@
  * Created by Kaiser on 16/6/7.
  */
 function displayCitations() {
-  //      获取所有引用
+  //  获取所有引用
   var quotes = document.getElementsByTagName('blockquote')
-  //      遍历引用
+  //  遍历引用
   for (var i = 0; i < quotes.length; i++) {
     var url = quotes[i].getAttribute('cite')
     if (!url) continue

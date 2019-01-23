@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>判断复选框是否选中</title>
@@ -13,24 +14,26 @@
     </style>
 
 </head>
+
 <body>
-<input type="checkbox" id="cr">
-<label for="cr">我已阅读以上制度</label>
-<script src="../script/jquery-1.11.3/jquery.min.js"></script>
-<script>
-    //    锋利的jQueryV2.noConflict();  //    让jquery$释权
-    $(function () {
-        //jQuery对象
-        var $cr = $('#cr');
-        //DOM对象
-        var cr = $cr[0];
-        $cr.click(function () {
-//            if (cr.checked) {        //DOM判断方式
-            if ($cr.is(':checked')) {  //jQuery判断方式
-                alert('感谢您的支持!');
-            }
-        })
-    });
-</script>
+    <input type="checkbox" id="cr">
+    <label for="cr">我已阅读以上制度</label>
+    <script src="../script/jquery-1.11.3/jquery.min.js"></script>
+    <script>
+        //    锋利的jQueryV2.noConflict();  //    让jquery$释权
+        $(function () {
+            //jQuery对象
+            var $cr = $('#cr');
+            //DOM对象
+            var cr = $cr[0];
+            $cr.click(function () {
+                //            if (cr.checked) {        //DOM判断方式
+                if ($cr.is(':checked')) { //jQuery判断方式
+                    alert('感谢您的支持!');
+                }
+            })
+        });
+    </script>
 </body>
+
 </html>

@@ -9,7 +9,6 @@ function prepareSlideShow() {
     var links = list.getElementsByTagName('a');
 
     //为链接元素的onmouseover事件添加动画效果
-
     links[0].onmouseover = function () {
         moveElement('preview', -100, 0, 10);
     }
