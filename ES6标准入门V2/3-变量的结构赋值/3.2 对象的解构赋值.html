@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3.2 对象的解构赋值</title>
+</head>
+
+<body>
+  <script>
+    var {
+      v1,
+      v2
+    } = {
+      v2: 222,
+      v1: 111
+    }
+    console.log(v1, v2) // 111 222
+    /*---------------------*/
+    var {
+      v
+    } = {
+      v1: '111',
+      v2: 222
+    }
+    console.log(v) // undefined
+    /*---------------------*/
+    var {
+      foo: baz
+    } = {
+      foo: 'aaa',
+      baz: 'bbb'
+    }
+    // console.log(foo) // foo is not defined
+    console.log(baz) // aaa
+
+    /*---------------------*/
+    let obj = {
+      first: 'hello',
+      last: 'world'
+    }
+    let {
+      first: f,  // 此处的first和last是模式，不是变量，不会被赋值
+      last: l
+    } = obj
+    console.log('f==>', f) // 'hello'
+    console.log('l==>', l) // 'world'
+
+    /*---------------------*/
+    let {
+      first,
+      last
+    } = obj
+    console.log('first==>', first) // 'hello'
+    console.log('last==>', last) // 'world'
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3.1 数组的解构赋值</title>
+</head>
+
+<body>
+  <script>
+    //TODO 解构赋值本质上属于“模式匹配”
+
+
+    var [a, b, c] = [1, 2, 3]
+    console.log(a) // 1
+    console.log(b) // 2
+    console.log(c) // 3
+
+    //------------------------------
+
+    let [head, ...rest] = [1, 2, 3, 4]
+    console.log(head) // 1
+    console.log(rest) // [2,3,4]
+
+    //------------------------------
+    let [x, y, ...z] = [1]
+    console.log(x) // 1
+    console.log(y) // undefined
+    console.log(z) // []
+
+    //------------------------------
+    // 右边不是可遍历的结构，不具备Iterator接口， 解构不成功
+    // let [f1] = {} // {} is not iterable
+    // let [f2] = 1 // 1 is not iterable
+    // let [f3] = '11' // '11' is not iterable
+
+    //------------------------------
+    let [x1, y1] = new Set(["a", "a", "c"])
+    console.log('x==>', x1)
+
+    //------------------------------
+    // Generator函数具有Iterator接口
+    function* fibs() {
+      var a = 0
+      var b = 1
+      while (true) {
+        yield a;
+        [a, b] = [b, a + b]
+      }
+    }
+    let [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10] = fibs()
+    console.log(m1) // 0
+    console.log(m2) // 1
+    console.log(m3) // 1
+    console.log(m4) // 2
+    console.log(m5) // 3
+    console.log(m6) // 5
+    console.log(m7) // 8
+    console.log(m8) // 13
+    console.log(m9) // 21
+    console.log(m10) // 34
+    //------------------------------
+    let [n1 = 1] = [undefined]
+    let [n2 = 1] = []
+    console.log('n1==>', n1) // 1
+    console.log('n2==>', n2) // 1
+
+    //------------------------------
+    function f() {
+      return 'aaa'
+    }
+    var [v1 = f()] = []
+    var [v2 = f()] = [0]
+    console.log('v1==>', v1) // aaa
+    console.log('v2==>', v2) // 0
+
+    //------------------------------
+    let [t1 = 1, t2 = t1] = []
+    console.log('t1==>', t1) // 1
+    console.log('t2==>', t2) // 1
+    let [t3 = t4, t4 = 2] = [] //  t4 is not defined
+  </script>
+
+</body>
+
+</html>

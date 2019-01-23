@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2.2块级作用域</title>
+</head>
+
+<body>
+  <script>
+    var tmp = new Date()
+
+    function f() {
+      console.log(tmp)
+      if (false) {
+        var tmp = "hello word"
+      }
+    }
+    f()
+    // -------------------------------
+
+    function f1() {
+      let n = 5
+      if (true) {
+        let n = 10
+      }
+      console.log(n)
+    }
+    f1()
+
+    // -------------------------------
+    function f2() {
+      console.log('I am outside')
+    }
+
+    (function () {
+      if (true) {
+        function f2() {
+          console.log('I am inside')
+        }
+      }
+      f2() // I am inside
+    })()
+    
+
+    // -------------------------------
+    let f3
+    {
+      let a = 'secret'
+      f3 = function (params) {
+        return a
+      }
+    }
+    console.log(f3()) // 'secret'
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2.5 全局对象的属性</title>
+</head>
+
+<body>
+  <script>
+    // 全局对象是最顶层的对象：
+    // 在浏览器环境指的是window对象
+    // 在Node.js中指的是global对象
+
+
+    // let、const和class不属于全局对象的属性
+    function f() {
+      console.log('function')
+    }
+    console.log(window.f) // f() { console.log('function') }
+    var a = 1
+    console.log(window.a) // 1
+    let b = 2
+    console.log(window.b) // undefine
+  </script>
+</body>
+
+</html>

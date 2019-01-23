@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3.5 函数参数的结构赋值</title>
+</head>
+
+<body>
+  <script>
+    const add = ([x, y]) => x + y
+    console.log(add([1, 2])) // 3
+    console.log(add(1, 2)) //ERROR: undefined is not a function
+
+    // -------------
+    const arr = [
+      [0, 2],
+      [5, 5]
+    ].map(([a, b]) => a += b)
+    console.log(arr) // [2,10]
+
+    // -------------
+    const f1 = ({
+      x = 0,
+      y = 0
+    } = {}) => [x, y]
+    console.log(f1({ x: 3, y: 8 })) // [3,8]
+    console.log(f1()) // [0,0]
+    console.log(f1({})) // [0,0]
+    console.log(f1({x:1})) // [1,0]
+    console.log(f1({z:9})) // [0,0]
+
+    // -------------
+    const f2 = ({ x, y } = { x: 0, y: 0 }) => [x, y]
+    console.log(f2({ x: 3, y: 8 })) // [3,8]
+    console.log(f2()) // [0,0]
+    console.log(f2({})) // [undefined,undefined]
+    console.log(f2({ x: 1 })) // [1,undefined]
+    console.log(f2({ z: 9 })) // [undefined,undefined]
+  </script>
+</body>
+
+</html>

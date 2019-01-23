@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3.4 布尔值的解构赋值</title>
+</head>
+
+<body>
+  <script>
+    // 如果等号右边的不是对象，则会先将其转为对象
+    let {
+      toString: n
+    } = 123
+    console.log(n === Number.prototype.toString) // true
+
+    //-----------------------
+    let {
+      toString: b
+    } = true
+    console.log(b === Boolean.prototype.toString) // true
+  </script>
+</body>
+
+</html>

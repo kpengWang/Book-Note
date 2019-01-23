@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2.3 const命令</title>
+</head>
+
+<body>
+  <script>
+    /*
+      const
+      1.const 一旦声明，就必须初始化赋值
+      2.暂时性死区，没有作用域提升
+      3.不可重复声明
+    */
+    // const arr // Uncaught SyntaxError: Missing initializer in const declaration
+    const arr = []
+    arr[0] = 0
+    arr[1] = 1
+    // arr.length = 0  // 可修改长度
+    console.log(arr)
+    const obj = {}
+    Object.freeze(obj)
+    obj['test'] = 0
+    obj.test = 3
+    console.log(obj)
+  </script>
+</body>
+
+</html>
