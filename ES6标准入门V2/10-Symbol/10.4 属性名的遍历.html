@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10.4 属性名的遍历</title>
+</head>
+
+<body>
+  <script>
+    const obj = {
+      [Symbol('a')]: 'aaa',
+      [Symbol('b')]: 'bbb',
+      num: 100
+    }
+
+    // 只有使用Object.getOwnPropertySymbols()和Reflect.ownKeys()两种方法能遍历到
+    const names1 = Object.getOwnPropertySymbols(obj)
+    console.log(names1) // [Symbol(a), Symbol(b)]
+
+    const names2 = Reflect.ownKeys(obj) //  ["num", Symbol(a), Symbol(b)]
+    console.log(names2)
+
+    const names3 = Object.keys(obj)
+    console.log(names3) // ["num"]
+
+    const names4 = Object.getOwnPropertyNames(obj)
+    console.log(names4) // ["num"]
+
+
+    // 在函数方法中的使用，为对象定义非私有但是又只能用于内部的方法
+    let size = Symbol('size')
+    class Fn {
+      constructor() {
+        this[size] = 0
+      }
+      add(item) {
+        this[this[size]] = item
+        this[size]++
+      }
+      static sizeOf(instance) {
+        return instance[size]
+      }
+    }
+    const fn = new Fn()
+    console.log('fn==>', Fn.sizeOf(fn)) // 0
+
+    fn.add('fn')
+    console.log('fn==>', Fn.sizeOf(fn)) // 1
+    fn.add(9)
+    console.log('fn==>', Fn.sizeOf(fn)) // 2
+    console.log(Object.keys(fn)) // ["0", "1"]
+  </script>
+
+</body>
+
+</html>

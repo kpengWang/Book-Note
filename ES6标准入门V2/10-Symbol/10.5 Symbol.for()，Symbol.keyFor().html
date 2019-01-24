@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10.5 Symbol.for()，Symbol.keyFor()</title>
+</head>
+
+<body>
+  <script>
+    // 使两个Symbol相等
+    // 使用多次Symbol.for() 都会返回同一个Symbol值，而Symbol()则会返回多个不同的Symbol值
+
+    let s1 = Symbol.for('s')
+    let s2 = Symbol.for('s')
+    console.log(s1 === s2) // true
+
+    console.log(Symbol.keyFor(s1)) // s
+    console.log(Symbol.keyFor(s2)) // s
+
+    s1 = Symbol('s1')
+    s2 = Symbol('s2')
+    console.log(s1 === s2) // false
+    console.log(Symbol.keyFor(s1)) // undefined
+  </script>
+
+</body>
+
+</html>

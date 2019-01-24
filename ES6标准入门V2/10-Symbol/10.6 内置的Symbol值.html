@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10.5 Symbol.for()，Symbol.keyFor()</title>
+</head>
+
+<body>
+  <script>
+    //  Symbol.hasInstance
+    const s1 = Symbol('s1')
+    class Fn1 {
+      [Symbol.hasInstance](foo) {
+        return foo instanceof Array
+      }
+    }
+    const fn1 = new Fn1()
+    console.log(fn1 instanceof Array) // false
+
+    //  Symbol.isConcatSpreadable
+    //  Symbol.species 
+    //  Symbol.match
+    //  Symbol.replace
+    //  Symbol.search
+    //  Symbol.split
+    //  Symbol.iterator
+    //  Symbol.toPrimitive
+    //  Symbol.toStringTag
+    //  Symbol.unscopables
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+  </script>
+
+</body>
+
+</html>

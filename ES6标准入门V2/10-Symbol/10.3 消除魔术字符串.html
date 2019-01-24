@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10.3 消除魔术字符串</title>
+</head>
+
+<body>
+  <script>
+    // 防止强耦合
+    const shapeType = {
+      triangle: Symbol(),
+      square: Symbol()
+    }
+
+    function getArea(shape, options) {
+      var area = 0
+
+      switch (shape) {
+        // case 'Triangle' // 魔术字符串
+        case shapeType.triangle:
+          area = options.width * options.height * .5
+          break
+        case shapeType.square:
+          area = options.width * options.height
+          break
+      }
+      return area
+    }
+
+    console.log(getArea(shapeType.square, {
+      width: 20,
+      height: 10
+    })) // 200
+
+    console.log(getArea(shapeType.triangle, {
+      width: 20,
+      height: 10
+    })) // 100
+  </script>
+
+</body>
+
+</html>

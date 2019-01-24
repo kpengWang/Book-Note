@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10.1 概述</title>
+</head>
+
+<body>
+  <script>
+    //1. Symbol值通过Symbol()函数生成
+    //2. Symbol()函数前不能使用new命令，因为它是原始类型并不是对象
+    //3. Symbol值不是对象，不能添加属性，它是一种类似于字符串的基本数据类型
+    //4. Symbol能够接收一个字符串作为参数
+    //5. Symbol可以转换为布尔值或使用toString()转为字符串，不能直接转为数值
+
+    let s1 = Symbol()
+    let s2 = Symbol()
+    console.log(typeof s1 === 'symbol') //true
+    console.log('s1 === s2==>', s1 === s2) //false
+    s1 = Symbol('s1')
+    s2 = Symbol('s2')
+    console.log(typeof s1 === 'symbol') //true
+    console.log('s1 === s2==>', s1 === s2) //false
+
+
+    console.log(s1) // Symbol(s1)
+    console.log(!!s1) // true
+    console.log(Number(!!s1)) // true
+    console.log(s1.toString()) // 'Symbol(s1)'
+    console.log('s1' + s1) // 报错 Cannot convert a Symbol value to a string
+    console.log(Number(s1)) // 报错  Cannot convert a Symbol value to a number
+  </script>
+
+</body>
+
+</html>

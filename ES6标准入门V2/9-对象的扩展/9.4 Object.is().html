@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>9.4 Object.is()</title>
+</head>
+
+<body>
+  <script>
+    // console.log(isNaN(NaN)) //true
+    // console.log(isNaN(undefined)) //true
+    // console.log(isNaN({})) //true
+
+    // console.log(isNaN('')) //false
+    // console.log(isNaN(null)) //false
+    // console.log(isNaN(0)) //false
+    // console.log(isNaN(-1)) //false
+    // console.log(isNaN([])) //false
+
+    console.log(Number.isNaN(NaN)) //true
+
+    console.log(Number.isNaN(undefined)) //false
+    console.log(Number.isNaN({})) //false
+    console.log(Number.isNaN('')) //false
+    console.log(Number.isNaN(null)) //false
+    console.log(Number.isNaN(0)) //false
+    console.log(Number.isNaN(-1)) //false
+    console.log(Number.isNaN([])) //false
+    const equals = (a, b) => {
+      if (a === b) return true
+      if (a instanceof Date && b instanceof Date) {
+        return a.getTime() === b.getTime()
+      }
+      if (!a || !b || (typeof a !== 'object' && typeof b !== 'object')) {
+        return a === b
+      }
+      if (a === null || a === undefined || b === null || b === undefined) {
+        return false
+      }
+      if (a.prototype !== b.prototype) return false
+      let keys = Object.keys(a)
+      if (keys.length !== Object.keys(b).length) return false
+      return keys.every(k => equals(a[k], b[k]))
+    }
+    const o1 = {
+      a: 123,
+      b: 234,
+      c: {
+        a: 333
+      }
+    }
+    const o2 = Object.assign({}, o1)
+
+    console.log('//////////////////////')
+
+    console.log(equals(o1, o2))
+    console.log(Object.is(o1, o2))
+
+    o2.a = 999
+    o2.b = 111
+    o2.c = 678
+    console.log(o1)
+    console.log(o2)
+  </script>
+</body>
+
+</html>

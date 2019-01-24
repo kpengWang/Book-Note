@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10.2 作为属性名的Symbol</title>
+</head>
+
+<body>
+  <script>
+    // 作为对象属性的读写
+    let symbol = Symbol()
+    let obj = {}
+
+    // 方法一
+    obj[symbol] = 'hello'
+
+    // 方法二
+    obj = {
+      [symbol]: 'ttt'
+    }
+
+    // 方法三
+    Object.defineProperty(obj, symbol, {
+      value: '789'
+    })
+    console.log(obj) // {Symbol(test): "789"}
+    console.log(obj.symbol) // undefined
+    console.log(obj[symbol]) // 789
+    console.log(obj['symbol']) // undefined
+
+    // ---------------------------------------------------------
+    let func = Symbol('func')
+    obj = {
+      [func]: (text = '文本') => text
+    }
+
+    console.log(obj[func]()) // '文本'
+    console.log(obj[func](123)) // 123
+    // ---------------------------------------------------------
+
+    const log = {
+      DEBUG: Symbol('debug'),
+      INFO: Symbol('info'),
+      WARN: Symbol('warn')
+    }
+    console.log(log.DEBUG)
+  </script>
+
+</body>
+
+</html>
