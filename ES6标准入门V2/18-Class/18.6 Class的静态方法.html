@@ -5,68 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>18.4 Class的getter函数和setter函数</title>
+  <title>18.6 Class的静态方法</title>
 </head>
 
 <body>
   <script>
-    class Point {
-      constructor(x, y) {
-        this.x = x
-        this.y = y
-      }
-      toString() {
-        return `${this.x},${this.y}!`
-      }
-      static add() {
-        return this.x += this.y
+    //1. 如果在一个方法前加上 static 关键字，表示该方法不会被实例继承，而是直接通过类来调用，该方法称为“静态方法”
+    //2. 父类的静态方法会被子类继承
+    //3. 静态方法也可从子类的super对象上调用
+
+    class Parent {
+      static method() {
+        return 'parent method'
       }
     }
 
-    const p = new Point('hello', 'world')
-
-    console.log(Point.name) // Point
-    console.log(Point.prototype) // 'function'
-    console.log(Point.length) // 2 ，不包含static方法
-
-    // 实例原型指向构造函数
-    console.log(p.constructor === Point) // true
-
-    // 本质上还是一个函数
-    console.log(typeof Point) // 'function'
-    console.log(typeof Point.constructor) // 'function'
-
-    // 方法调用
-    console.log(p.toString()) // 'hello,world!'
-
-    // 不能使用Object.assign()扩展
-    Point.prototype = Object.assign({}, Point.prototype, {
-      toAdd() {},
-      toAdd2() {}
-    })
-    console.log(Point.prototype) // {constructor: ƒ, toString: ƒ}
-    console.log(p.__proto__ === Point.prototype) // true
-
-    // 不可枚举
-    console.log(Object.keys(Point.prototype)) // []
-    console.log(Object.keys(Point)) // []
-
-    // 获取属性方法
-    console.log(Object.getOwnPropertyNames(Point)) //  ["length", "prototype", "add", "name"]
-    console.log(Object.getOwnPropertyNames(Point.prototype)) // ["constructor", "toString"] ，不包含static方法
-
-    // 判断属性
-    console.log(p.hasOwnProperty('x')) //x
-    console.log(p.__proto__) // {constructor: ƒ, toString: ƒ}
-
-
-    const Cls = class Fn {
-      constructor(str) {
-
+    class Child extends Parent {
+      // 如果该处没有static关键字，则Child直接调用的是父类的同名方法
+      static method() {
+        return 'child,' + super.method()
       }
     }
-    console.log(Cls.name) // Fn
-    // console.log(Fn) //报错 Fn is not defined
+
+    // const parent = new Parent()
+    // const child = new Child()
+
+    console.log(Child.method()) // child,parent method
+    // parent.method() //报错 Uncaught TypeError: parent.method is not a function
   </script>
 </body>
 

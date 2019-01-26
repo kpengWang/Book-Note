@@ -55,10 +55,10 @@
       ['lastName', 'Wang']
     ])
 
-    console.log('map1==>', map1)
-    console.log('map1==>', map1.set('first', 'KKKK')) // 'Kyle'
-    console.log('map1==>', map1.get('first')) // 'Kyle'
-    console.log('map1==>', map1.get('lastName')) // 'Kyle'
+    console.log('map1==>', map1) // Map(2) {"first" => "Kyle", "lastName" => "Wang"}
+    console.log('map1==>', map1.set('first', 'KKKK')) // Map(2) {"first" => "KKKK", "lastName" => "Wang"}
+    console.log('map1==>', map1.get('first')) // 'KKKK'
+    console.log('map1==>', map1.get('lastName')) // 'Wang'
   </script>
 </body>
 

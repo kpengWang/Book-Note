@@ -6,68 +6,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>18.4 Class的getter函数和setter函数</title>
+  <title>18.8 new.target属性</title>
 </head>
 
 <body>
   <script>
-    class Point {
-      constructor(x, y) {
-        this.x = x
-        this.y = y
-      }
-      toString() {
-        return `${this.x},${this.y}!`
-      }
-      static add() {
-        return this.x += this.y
-      }
-    }
+    //1. new.target 返回 new 命令所作用的构造函数
+    //2. 如果构造函数不是通过 new 命令调用，那么new.target返回undefined
+    //3. 子类继承父类时，new.target会返回子类,可以利用new.target写不能独立使用必须继承后才能用的类
 
-    const p = new Point('hello', 'world')
+    function Foo1() {
+      console.log('new.target1==>', new.target !== undefined ? 'used new' : 'unused new')
 
-    console.log(Point.name) // Point
-    console.log(Point.prototype) // 'function'
-    console.log(Point.length) // 2 ，不包含static方法
-
-    // 实例原型指向构造函数
-    console.log(p.constructor === Point) // true
-
-    // 本质上还是一个函数
-    console.log(typeof Point) // 'function'
-    console.log(typeof Point.constructor) // 'function'
-
-    // 方法调用
-    console.log(p.toString()) // 'hello,world!'
-
-    // 不能使用Object.assign()扩展
-    Point.prototype = Object.assign({}, Point.prototype, {
-      toAdd() {},
-      toAdd2() {}
-    })
-    console.log(Point.prototype) // {constructor: ƒ, toString: ƒ}
-    console.log(p.__proto__ === Point.prototype) // true
-
-    // 不可枚举
-    console.log(Object.keys(Point.prototype)) // []
-    console.log(Object.keys(Point)) // []
-
-    // 获取属性方法
-    console.log(Object.getOwnPropertyNames(Point)) //  ["length", "prototype", "add", "name"]
-    console.log(Object.getOwnPropertyNames(Point.prototype)) // ["constructor", "toString"] ，不包含static方法
-
-    // 判断属性
-    console.log(p.hasOwnProperty('x')) //x
-    console.log(p.__proto__) // {constructor: ƒ, toString: ƒ}
-
-
-    const Cls = class Fn {
-      constructor(str) {
-
+      if (new.target === Foo1) {
+        // throw new Error('本类不能实例化')
       }
     }
-    console.log(Cls.name) // Fn
-    // console.log(Fn) //报错 Fn is not defined
+
+    let foo1 = new Foo1()
+    foo1 = Foo1()
+
+    class Foo2 extends Foo1 {
+      constructor() {
+        super()
+        console.log('new.target2==>', new.target !== undefined ? 'used new' : 'unused new')
+      }
+    }
+    
+    let foo2 = new Foo2()
   </script>
 </body>
 

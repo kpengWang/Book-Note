@@ -10,63 +10,42 @@
 
 <body>
   <script>
-    class Point {
-      constructor(x, y) {
-        this.x = x
-        this.y = y
+    // 使用get 和 set 关键字可以对类的某个属性设置函数和取值函数，以便拦截该属性的存取行为
+    class MyClass {
+      constructor(params) {
+
       }
-      toString() {
-        return `${this.x},${this.y}!`
+      get prop() {
+        return 'getter'
       }
-      static add() {
-        return this.x += this.y
+      set prop(val) {
+        console.log('setter:' + val)
+      }
+    }
+    let inst = new MyClass()
+    inst.prop = 999 // 'setter:999
+    console.log(inst.prop) // 123
+
+    ///////////////////////////////////////////
+    class CustomHtmlElment {
+      constructor(el) {
+        this.el = el
+      }
+      get html() {
+        return this.el.innerHTML
+      }
+      set html(val) {
+        this.el.innerHTML = val
       }
     }
 
-    const p = new Point('hello', 'world')
+    const desc = Object.getOwnPropertyDescriptor(CustomHtmlElment.prototype, 'html')
 
-    console.log(Point.name) // Point
-    console.log(Point.prototype) // 'function'
-    console.log(Point.length) // 2 ，不包含static方法
-
-    // 实例原型指向构造函数
-    console.log(p.constructor === Point) // true
-
-    // 本质上还是一个函数
-    console.log(typeof Point) // 'function'
-    console.log(typeof Point.constructor) // 'function'
-
-    // 方法调用
-    console.log(p.toString()) // 'hello,world!'
-
-    // 不能使用Object.assign()扩展
-    Point.prototype = Object.assign({}, Point.prototype, {
-      toAdd() {},
-      toAdd2() {}
-    })
-    console.log(Point.prototype) // {constructor: ƒ, toString: ƒ}
-    console.log(p.__proto__ === Point.prototype) // true
-
-    // 不可枚举
-    console.log(Object.keys(Point.prototype)) // []
-    console.log(Object.keys(Point)) // []
-
-    // 获取属性方法
-    console.log(Object.getOwnPropertyNames(Point)) //  ["length", "prototype", "add", "name"]
-    console.log(Object.getOwnPropertyNames(Point.prototype)) // ["constructor", "toString"] ，不包含static方法
-
-    // 判断属性
-    console.log(p.hasOwnProperty('x')) //x
-    console.log(p.__proto__) // {constructor: ƒ, toString: ƒ}
-
-
-    const Cls = class Fn {
-      constructor(str) {
-
-      }
-    }
-    console.log(Cls.name) // Fn
-    // console.log(Fn) //报错 Fn is not defined
+    console.log(desc) // {get: ƒ, set: ƒ, enumerable: false, configurable: true}
+    console.log('get' in desc) // true
+    console.log('set' in desc) // true
+    console.log('enumerable' in desc) // true
+    console.log('configurable' in desc) // true
   </script>
 </body>
 

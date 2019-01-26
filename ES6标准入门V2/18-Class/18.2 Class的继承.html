@@ -10,6 +10,11 @@
 
 <body>
   <script>
+    // 1. 子类的__proto__属性表示构造函数的继承，总是指向父类
+    // 2. 子类prototype属性的__proto__属性表示方法的继承，总是指向父类的prototype属性
+    // 3. 子类实例的__proto__属性的__proto__属性,指向的是父类实例的__proto__属性
+    // 4. 子类实例的__proto,指向的是子类的prototype属性
+
     class Parent {
       constructor(x, y) {
         this.x = x
@@ -72,7 +77,6 @@
     console.log('child.prototype ==>', child.prototype) // undefined
     console.log('child.__proto__ ==>', child.__proto__) // Parent {constructor: ƒ, toString: ƒ}
     console.log('child.constructor ==>', child.constructor)
-    
     /* -------------------------
     //  child.constructor的 log
     // -------------------------
@@ -85,10 +89,31 @@
             console.log(super.__proto__) // Parent {constructor: ƒ, toString: ƒ}
          …
     */
+    
     console.log(child.__proto__ === Child.prototype) // true
+    console.log(child.__proto__.__proto__ === parent.__proto__) // true
+    console.log(Child.prototype.__proto__ === parent.__proto__) // true
+
 
     console.log('--------子类方法调用---------')
     console.log('child.toString() ==>', child.toString()) //1,2!3
+
+    // ---------------------------------------------------------------------------
+    class A {
+
+    }
+    class B {
+
+    }
+    // B的实例继承A的实例
+    Object.setPrototypeOf(B.prototype, A.prototype)
+
+    console.log('B.__proto__ ==>', B.prototype.__proto__ === A.prototype) // true
+
+    // B继承A的静态属性
+    Object.setPrototypeOf(B, A)
+    console.log('B.__proto__ ==>', B.prototype.__proto__ === A.prototype) // true
+    console.log('B.__proto__ ==>', B.__proto__ === A) // true
   </script>
 </body>
 

@@ -9,7 +9,28 @@
 </head>
 
 <body>
+  <div class="element">
+
+  </div>
   <script>
+    //1. WeakMap 只接收除了null以外的对象或数组作为键名
+    //2. WeakMap 只支持set()、get()、has(), delete() 四个方法
+    //3. WeakMap 不支持遍历
+    //4. WeakMap 不支持size属性
+    //5. WeakMap 的成员不可引用
+
+    const wm = new WeakMap()
+    let el = document.querySelector('.element')
+    // wm.set(1, 2) // 报错 Invalid value used as weak map key
+    wm.set([], 2)
+    wm.set(el, 'div')
+
+    console.log(wm.get(el)) // 'div'
+
+    el = null 
+    console.log(wm.get(el)) // undefined
+
+    console.log(wm)
   </script>
 </body>
 

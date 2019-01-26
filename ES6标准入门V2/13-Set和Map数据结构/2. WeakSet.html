@@ -11,8 +11,10 @@
 <body>
   <script>
     //1. WeakSet 的成员只能是对象或数组
-    //2. WeakSet 不可遍历,没有size属性
-    //3. WeakSet 的成员不可引用
+    //2. WeakSet 不可遍历
+    //3. WeakSet 只支持add()、get()、has(), delete() 四个方法
+    //4. WeakSet 没有size属性
+    //5. WeakSet 的成员不可引用
 
     let ws = new WeakSet()
     let obj = {name:'Kyle'}
