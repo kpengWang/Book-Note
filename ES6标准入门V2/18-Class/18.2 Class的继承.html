@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>18.2 Class的继承</title>
+</head>
+
+<body>
+  <script>
+    class Parent {
+      constructor(x, y) {
+        this.x = x
+        this.y = y
+      }
+      toString() {
+        return `${this.x},${this.y}!`
+      }
+      static add() {
+        return this.x += this.y
+      }
+    }
+
+    class Child extends Parent {
+      constructor(x, y, z) {
+        super(x, y) // 
+        this.z = z
+      }
+      toString() {
+        console.log('super.__proto__ ==>', super.__proto__) // Parent {constructor: ƒ, toString: ƒ}
+        // 调用父类的toString()
+        return super.toString() + this.z
+      }
+    }
+    const parent = new Parent()
+    const child = new Child(1, 2, 3)
+
+    console.log(typeof child) // object
+    console.log(typeof child.__proto__) // object
+
+    // 类的prototype属性和__proto__属性
+    console.log(child instanceof Parent) // true
+    console.log(child instanceof Child) // true
+
+    console.log('--------子类的prototype属性和__proto__属性---------')
+    console.log('Child.constructor ==>', Child.constructor) // Function() { [native code] }
+    console.log('Child.prototype ==>', Child.prototype) // Parent {constructor: ƒ, toString: ƒ}
+    console.log('Child.__proto__ ==>', Child.__proto__)
+    /* -------------------------
+    //  Child.__proto__的 log
+    // -------------------------
+    //    class Parent {
+    //       constructor(x, y) {
+    //         this.x = x
+    //         this.y = y
+    //       }
+    //       toString() {
+    //         return `${this.x},${this.y}!`
+    //       }
+    //       static add() {
+    //         return this.x += this.y
+           …
+     */
+    console.log('Child.prototype ==>', Child.prototype) // Parent {constructor: ƒ, toString: ƒ}
+    console.log('Child.prototype.__proto__ ==>', Child.prototype.__proto__) // {constructor: ƒ, toString: ƒ}
+    console.log(Child.prototype.__proto__ === Parent.prototype) // true
+
+
+    console.log('--------子实例的prototype属性和__proto__属性---------')
+    console.log('child.prototype ==>', child.prototype) // undefined
+    console.log('child.__proto__ ==>', child.__proto__) // Parent {constructor: ƒ, toString: ƒ}
+    console.log('child.constructor ==>', child.constructor)
+    
+    /* -------------------------
+    //  child.constructor的 log
+    // -------------------------
+        class Child extends Parent {
+          constructor(x, y, z) {
+            super(x, y) // 
+            this.z = z
+          }
+          toString() {
+            console.log(super.__proto__) // Parent {constructor: ƒ, toString: ƒ}
+         …
+    */
+    console.log(child.__proto__ === Child.prototype) // true
+
+    console.log('--------子类方法调用---------')
+    console.log('child.toString() ==>', child.toString()) //1,2!3
+  </script>
+</body>
+
+</html>

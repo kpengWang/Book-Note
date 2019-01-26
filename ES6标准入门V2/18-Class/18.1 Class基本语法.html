@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>18.1 Class基本语法</title>
+</head>
+
+<body>
+  <script>
+    class Point {
+      constructor(x, y) {
+        this.x = x
+        this.y = y
+      }
+      toString() {
+        return `${this.x},${this.y}!`
+      }
+      static add() {
+        return this.x += this.y
+      }
+    }
+
+    const p = new Point('hello', 'world')
+
+    console.log(Point.name) // Point
+    console.log(Point.prototype) // {constructor: ƒ, toString: ƒ}
+    console.log(Point.length) // 2 ，不包含static方法
+
+    // 实例原型指向构造函数
+    console.log(typeof p) // object
+    console.log(p.constructor === Point) // true
+
+    // 本质上还是一个函数
+    console.log(typeof Point) // 'function'
+    console.log(typeof Point.prototype) // object
+    console.log(typeof Point.constructor) // 'function'
+
+    // 方法调用
+    console.log(p.toString()) // 'hello,world!'
+
+    // 不能使用Object.assign()扩展
+    Point.prototype = Object.assign({}, Point.prototype, {
+      toAdd() {},
+      toAdd2() {}
+    })
+    console.log(Point.prototype) // {constructor: ƒ, toString: ƒ}
+    console.log(p.__proto__ === Point.prototype) // true
+
+    // 不可枚举
+    console.log(Object.keys(Point.prototype)) // []
+    console.log(Object.keys(Point)) // []
+
+    // 获取属性方法
+    console.log(Object.getOwnPropertyNames(Point)) //  ["length", "prototype", "add", "name"]
+    console.log(Object.getOwnPropertyNames(Point.prototype)) // ["constructor", "toString"] ，不包含static方法
+
+    // 判断属性
+    console.log(p.hasOwnProperty('x')) //x
+    console.log(p.__proto__) // {constructor: ƒ, toString: ƒ}
+
+    // 函数表达式
+    const Cls1 = class Fn {
+      constructor(str) {}
+    }
+    // 等同于
+    const Cls2 = function Fn(params) {}
+
+    console.log(Cls1.name) // Fn
+    console.log(Cls2.name) // Fn
+    console.log(Cls1.name === Cls2.name) // true
+    console.log(Fn) //报错 Fn is not defined
+  </script>
+</body>
+
+</html>

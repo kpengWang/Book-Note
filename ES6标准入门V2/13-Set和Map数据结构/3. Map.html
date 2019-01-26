@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3. Map</title>
+</head>
+
+<body>
+  <script>
+    const arr = []
+    const date = new Date()
+    const set = new Set()
+    const map = new Map()
+    const ws = new WeakSet()
+    const wm = new WeakMap()
+
+    const check = (val) => {
+      const str = Object.prototype.toString.call(val)
+      return str.substring(8, str.length - 1)
+    }
+
+    console.log(check(arr)) // 'Array'
+    console.log(check(date)) // 'Date'
+    console.log(check(set)) // 'Set'
+    console.log(check(map)) // 'Map'
+    console.log(check(ws)) // 'WeakSet'
+    console.log(check(wm)) // 'WeakMap'
+
+
+    let obj = {
+      name: 'Kyle'
+    }
+    // 设置
+    map.set(obj, 'name')
+    map.set(NaN, 'name')
+
+    console.log('set==>', map)
+
+    // 获取
+    console.log('get1==>', map.get(name)) // undefined
+    console.log('get2==>', map.get(obj)) // 'name'
+    console.log('get3==>', map.get({
+      name: 'Kyle'
+    })) // undefined, 引用不同
+
+    // 判断
+    console.log('has==>', map.has(obj))
+
+    // 设置加入数组
+    let map1 = new Map([
+      ['first', 'Kyle'],
+      ['lastName', 'Wang']
+    ])
+
+    console.log('map1==>', map1)
+    console.log('map1==>', map1.set('first', 'KKKK')) // 'Kyle'
+    console.log('map1==>', map1.get('first')) // 'Kyle'
+    console.log('map1==>', map1.get('lastName')) // 'Kyle'
+  </script>
+</body>
+
+</html>
