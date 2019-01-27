@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>16.9 两个有用的附加方法</title>
+</head>
+
+<body>
+  <script>
+    // 1. Promise内部的错误不会冒泡到全局，如果最后一个方法抛出错误，可能无法捕获到
+    // 2. done() 方法能够捕获到任何可能出现的错误，并且向全局抛出
+    // 3. finally() 方法接收一个普通的回调函数作为参数，该函数无论怎样都会必须执行
+
+    Promise.prototype.done = (onFulfilled, onRejected) => {
+      this.then(onFulfilled, onRejected).catch(err => {
+        setTimeout(() => {
+          throw err
+        }, 0)
+      })
+    }
+
+    Promise.prototype.finally = callback => {
+      let instance = this.constructor
+      return this.then(
+        res => instance.resovle(callback()).then(() => res),
+        err => instance.resovle(callback()).then(() => {
+          throw err
+        })
+      )
+    }
+  </script>
+</body>
+
+</html>

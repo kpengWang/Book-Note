@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>16.7 Promise.resolve()</title>
+</head>
+
+<body>
+  <script>
+    // 1. Promise.resolve()用于将现有对象转换为Promise对象
+    // 2. Promise.resolve(obj)方法等价于new Promise(resolve=>resolve(obj))
+    // 3. 判断参数是否属于异步操作，是看它是否具有then方法
+    // 4. 如果参数不具有then()方法，则返回一个新的Promise对象，状态为Resolved
+    // 5. 如果Promise.resolve方法的参数是一个Promise实例，则会原封不动的返回
+
+    const p1 = Promise.resolve(789)
+    const p2 = Promise.resolve('123')
+    const p3 = Promise.resolve(new Promise((resolve, reject) => {
+      resolve('p3p3p3p3')
+    }))
+
+    p1.then(res => console.log(res)) // 789
+  </script>
+</body>
+
+</html>

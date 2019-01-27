@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>16.5 Promise.all()</title>
+</head>
+
+<body>
+  <script>
+    // 1. Promise.all()用于将多个Promise实例包装成一个新的Promise实例
+    // 2. Promise.all方法不一定是参数，但是必须具有Iterator接口，且返回的每一个成员都是Promise实例
+    // 3. 只有p1、p2、p3状态都为Fulfilled, p状态才会变成Fulfilled
+    // 4. 当p1、p2、p3状态任一为Rejected, p状态就会变成Rejected
+
+    const p1 = () => new Promise(resolve => resolve('aaa'))
+    const p2 = () => new Promise(resolve => resolve('bbb'))
+    const p3 = () => new Promise(resolve => resolve('ccc'))
+
+    Promise.all([p1, p2, p3]).then(async res => {
+      const result = res.map(async item => await item())
+      console.log(await result[0]) // 'aaa'
+      console.log(await result[1]) // 'bbb'
+      console.log(await result[2]) // 'ccc'
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>16.4 Promise.prototype.catch()</title>
+</head>
+
+<body>
+  <script>
+    // 1. Promise.prototype.catch()是 .then(null,reject)的别名，用于指定发生错误时的回调函数
+    // 2. Promise对象的错误具有“冒泡”性质，会一直向后传递，直到被捕获为止。
+    // 3. 一般来说，不要在then方法中定义Rejected状态（二参），应使用catch方法，更接近同步的写法。
+    // 4. catch返回的还是一个Promise实例，后面还可以接着调用then方法
+
+    let asyncFoo = () => {
+      return new Promise(resolve => {
+        resolve(x + 2)
+      })
+    }
+
+    asyncFoo().then(res => {
+      return asyncFoo()
+    }).catch(err => {
+      console.log(err) //  x is not defined
+      y + 2
+    }).then(res => {
+      console.log('carry')
+    }).catch(err => {
+      console.log(err) //  y is not defined
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>16.2 Promise的基本用法</title>
+</head>
+
+<body>
+  <script>
+    // 1. Promise构造函数接受resolve和reject两个参数方法，由JavaScript引擎提供
+    // 2. resolve的参数可以是另一个Promise实例，等另一个promise的状态决定了现有promise的状态
+
+    // 异步加载
+    function timeout(ms) {
+      return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms, 'done')
+      })
+    }
+
+    timeout(2000).then(val => {
+      console.log(val) // 两秒后打印'done'
+    })
+
+    // 实现AJAX操作的例子
+    const getJson = url => {
+      const promise = new Promise((resolve, reject) => {
+        const client = new XMLHttpRequest()
+        client.open('GET', url) // 初始化一个请求
+        client.onreadystatechange = handler
+        client.responseType = 'json'
+        client.setRequestHeader('Accept', 'application/json') // 是设置HTTP请求头部的方法。此方法必须在open()方法和send()之间调用
+        client.send()
+      })
+
+      function handler() {
+        if (this.redeState !== 4) {
+          return
+        }
+        if (this.status === 200) {
+          resolve(this.response)
+        } else {
+          reject(new Error(this.statusText))
+        }
+      }
+
+      return promise
+    }
+
+
+    getJson('./data.json').then(res => {
+      cosnole.log(res)
+    })
+
+    // 一个Promise返回另一个Promise实例
+    let p1 = new Promise((res, rej) => {
+      setTimeout(() => {
+        rej(new Error('fail'))
+      }, 1000)
+    })
+
+    let p2 = new Promise(res => {
+      setTimeout(() => res(p1), 1000)
+    })
+
+    p2.then(res => console.log(res))
+    p2.catch(err => console.log(err))
+  </script>
+</body>
+
+</html>
