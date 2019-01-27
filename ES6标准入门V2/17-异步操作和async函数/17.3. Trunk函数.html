@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>17.3. Trunk函数</title>
+</head>
+
+<body>
+
+  <script>
+    // 1. 传值调用: 在函数计算前将参数计算完的结果传入函数，JavaScript用的是传值调用
+    // 2. 传名调用: 将参数直接传入函数体内，用到时再求值计算，避免未用到参数而造成性能损失，Haskell语言采用这种策略
+    // 3. 编译器的“传名调用”往往将参数放到一个临时函数中，再将临时函数传入函数体，这个临时函数称作Thrunk函数
+    // 4. 在JavaScript中，Thrunk函数替换的不是表达式，而是多餐函数，它将其替换成单参数的版本，且只接收回调函数作为参数。
+    // 5. Generator函数的执行过程其实是将同一个回调函数反复传入next方法的value属性。
+    let x = 2
+
+    function foo(m) {
+      // 中间隐藏的环节
+      //  const thrunk = () => x + 9
+      // return thrunk() +3
+      return m + 3
+    }
+    console.log(foo(x + 9)) // 14
+
+
+    // 简单实现“trunk函数转换器”
+    const simpleThunk = fn => {
+      return () => {
+        let args = Array.prototype.slice.call(arguments)
+        return callback => {
+          args.push(callback)
+          return fn.apply(this, args)
+        }
+      }
+    }
+
+    // 也可以安装第三方模块 $ npm install trunkify
+    function thunkify(fn) {
+      return () => {
+        let args = new Array(arguments.length)
+        let ctx = this
+
+        for (let i = 0; i < args.length; ++i) {
+          args[i] = arguments[i]
+        }
+
+        return done => {
+          let called
+          args.push(() => {
+            if (called) return
+            called = true
+            done.apply(null, arguments)
+          })
+          try {
+            fn.apply(ctx, args)
+          } catch (error) {
+            done(error)
+          }
+        }
+      }
+    }
+
+    function fn(a, b, callback) {
+      let sum = a + b
+      callback(sum)
+      callback(sum)
+    }
+    const ft = thrunkify(fn)
+    const print = console.log.bind(console)
+    fn(1, 3)(print)
+
+
+    // 自动执行的关键是，必须有一种机制来自动控制Generator函数的流程，接收和交换程序的执行权。
+    // 除了Thunk函数，回调函数和Promise也可以做到这一点
+    const fs = require('fs')
+    const thunkify = require('thunkify')
+    const readFile = thunkify(fs.redFile)
+
+    function run(fn) {
+      let gen = fn()
+
+      function next(err, data) {
+        let result = gen.next(data)
+        if (result.done) return
+        result.value(next)
+      }
+      next()
+    }
+
+    const gen = function* (params) {
+      let f1 = yield readFile('fileA')
+      let f2 = yield readFile('fileB')
+      //...
+      let fn = yield readFile('fileN')
+    }
+    run(gen)
+  </script>
+
+</body>
+
+</html>

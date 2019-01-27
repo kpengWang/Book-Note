@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>17.5. async函数</title>
+</head>
+
+<body>
+
+  <script>
+    /* async函数就是将Generator函数的*替换成async，将yield替换成await。以下几个特点：
+    // 1. 内置执行器
+    // 2. 自动执行，输出结果
+    // 3. 更好的语义
+    // 4. 更广的适用性
+    // 5. 返回值是一个Promise对象
+    */
+    // 1. async函数完全可以看成是一个由多个异步操作包装成的一个Promise对象，而await命令就是内部的then命令的语法糖
+    // 2. await命令只能用在async函数中，否则会报错
+
+    async function fn() {
+      // ...
+    }
+    //==> 等同于
+    function fn(args) {
+      // spawn函数就是自动执行器
+      return spawn(function* () {
+        // ...
+      })
+    }
+
+    //
+    const timeout = ms => {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+      })
+    }
+
+    const asyncPrint = async (value, ms) => {
+      await timeout(ms)
+      console.log(value)
+    }
+    asyncPrint('hello', 1000)
+
+
+    // 多个请求
+    const p1 = () => new Promise(resolve => resolve('aaa'))
+    const p2 = () => new Promise(resolve => resolve('bbb'))
+    const p3 = () => new Promise(resolve => resolve('ccc'))
+
+    Promise.all([p1, p2, p3]).then(async res => {
+      const results = res.map(async item => await item())
+      console.log(await results[0]) // 'aaa'
+      console.log(await results[1]) // 'bbb'
+      console.log(await results[2]) // 'ccc'
+    })
+
+    //同一函数 async与Promise、Generator的实现
+
+    // 使用Promise实现
+    function chainAnimations(elem, animations) {
+      let ret = null
+      let p = Promise.resolve()
+
+      for (let anim in animations) {
+        p = p.then(val => {
+          ret = val
+          return anim(elem)
+        })
+      }
+
+      return p.catch(err => {
+        // 忽略错误,继续执行
+      }).then(() => ret)
+    }
+
+    // 使用Generator实现
+    function chainAnimations(elem, animations) {
+      return spawn(function* () {
+        let ret = null
+        try {
+          for (let anim of animations) {
+            ret = yield anim(elem)
+          }
+        } catch (error) {
+          // 忽略错误,继续执行
+        }
+        return ret
+      })
+    }
+
+    // 使用async实现
+    async function chainAnimations(elem, animations) {
+      let ret = null
+      try {
+        for (let anim of animations) {
+          ret = await anim(elem)
+        }
+      } catch (error) {
+        // 忽略错误,继续执行
+      }
+      return ret
+    }
+  </script>
+
+</body>
+
+</html>

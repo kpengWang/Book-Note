@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>17.2. Generator函数</title>
+</head>
+
+<body>
+
+  <script>
+    // 1. Generator函数是协程在ES6中的实现，最大特点就是可以交出函数的执行权（即暂停执行）。
+    // 2. next方法的作用是分阶段执行Generator函数。每次调用next方法则会返回一个对象，表示当前阶段的信息（value属性和done属性）
+    // 3. value表示当前阶段的值，done属性表示执行状态，它是个布尔值
+    // 4. 函数体内外的数据交换和错误处理机制
+    // 5. next方法返回值的value属性，是Generator向外输出的数据，它能够接收一个参数，向Generator函数体内输入数据
+    // 6. Generator返回值是一个Iterator对象
+
+    function* foo(x) {
+      let y = yield x + 2
+      return y
+    }
+    let f = foo(3)
+    console.log(f.next()) // {value: 5, done: false}
+    console.log(f.next(7)) // {value: 7, done: true}
+
+
+    function* foo2(x) {
+      try {
+        let y = yield + 2
+      } catch (error) {
+        console.log(error)
+      }
+      return y
+    }
+    let f2 = foo2(9)
+    console.log(f2.next()) //{value: 2, done: false}
+    // f2.throw('ERROR')
+
+
+    // 异步任务的封装
+    const fetch = require('node-fetch')
+    function* foo3(url) {
+      const result = yield fetch(url)
+      console.log(result.bio)
+    }
+    const f3 = foo3('https://api.github.com/users/github')
+    const res = f3.next()
+    res.value.then(data => {
+      return data.json()
+    }).then(data => {
+      f3.next()
+    })
+  </script>
+
+
+</body>
+
+</html>
