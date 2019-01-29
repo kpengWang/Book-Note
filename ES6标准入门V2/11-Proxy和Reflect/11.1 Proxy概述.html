@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>11.1 Proxy概述</title>
+</head>
+
+<body>
+
+  <script>
+    // 1. Proxy用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”，即对编程语音进行编程
+    // 2. Proxy可以理解成在目标对象上架设了一个“拦截层”，可以对外界的访问进行过滤和改写。
+    // 3. new Proxy(target,handler)表示生成一个Proxy实例，target参数表示所要拦截的目标对象，handler参数也是一个对象，用来定制拦截行为
+
+    const obj = new Proxy({}, {
+      // target: 拦截对象
+      // key: 拦截对象的属性
+      // receiver: 当target对象设置了key属性的get函数时，receiver对象会绑定get函数的this对象
+      get(target, key, receiver) {
+        console.log(`getting ${key}`)
+        return Reflect.set(target, key, receiver)
+      },
+
+      // 拦截对象的设置，返回一个布尔值
+      set(target, key, value, receiver) {
+        console.log(`setting ${key}`)
+        return Reflect.set(target, key, value, receiver)
+      }
+    })
+    obj.count = 1
+    console.log(++obj.count) //2
+
+    const proxy1 = new Proxy({}, {
+      get(target, property) {
+        return 35
+      }
+    })
+    // console.log(Object.prototype.toString.call(proxy1))
+    proxy1.time = 111
+    proxy1.name = 222
+    console.log(proxy1.time) //35
+    console.log(proxy1.name) //35
+
+    ///////////////// 同一个拦截器函数可以设置多个操作
+    // 如果目标对象是个函数，可以使用apply和construct方法拦截
+    const handler = {
+      get(target, name) {
+        if (name === 'prototype') {
+          return Object.prototype
+        }
+      },
+      // 拦截Pxoxy实例作为函数调用的操作
+      apply(target, obj, args) {
+        console.log('target===>', target) // (x, y) => x + y
+        console.log('obj===>', obj) // undefined
+        console.log('args1===>', args) // [1, 2]
+        return args[0]
+      },
+      constructor(target, args, proxy) {
+        console.log('args2===>', args)
+        return args[1]
+      }
+    }
+    const proxy2 = new Proxy((x, y) => x + y, handler)
+
+    console.log(proxy2(1, 2)) //1 进入apply方法
+  </script>
+</body>
+
+</html>

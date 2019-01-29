@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>1.1 var声明及变量声明机制</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+      提升(Hoisting): 在函数作用域或全局作用域中使用var 关键字声明的变量，
+      无论实际上是在哪里声明的，都会被当成在当前作用域顶部声明的变量
+    */
+    function getValue(condition) {
+      if (condition) {
+        var value = 'blue'
+        return value
+      } else {
+        // 该处也能访问到value值
+        return value
+      }
+    }
+    console.log(getValue())
+  </script>
+</body>
+
+</html>

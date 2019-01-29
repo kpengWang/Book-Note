@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>1.4. 全局快作用域绑定</title>
+</head>
+
+<body>
+
+  <script>
+    // 如果希望在全局window下定义变量，仍可以使用var.常用于在浏览器中跨iframe或者跨window访问代码
+    var l = 666
+    let m = 888
+    const n = 999
+
+    console.log(window.l) //666
+    console.log(window.m) //unifined
+    console.log(window.n) //unifined
+  </script>
+</body>
+
+</html>

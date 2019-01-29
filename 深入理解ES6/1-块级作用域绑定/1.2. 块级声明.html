@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>1.2. 块级声明</title>
+</head>
+
+<body>
+
+  <script>
+    // 1. 块级作用域用于声明在指定块的作用域之外无法访问的变量
+    // 2. 禁止重复声明
+    // 3. const 必须初始化，被设定后不可更改
+    // 4. const 声明不允许修改绑定，但是允许修改值
+    // 5. let和const声明都是块级标识符，所以常量也只能在当前代码内有效，一旦执行到块外会立即被销毁。
+
+    const person = {
+      name: 'Kyle'
+    }
+
+    // 正确修改值方式 
+    person.name = 'Kpeng'
+
+    console.log(person)
+
+    // 不可修改绑定
+    person = { // 报错 Assignment to constant variable.
+      name: 'Peng'
+    }
+  </script>
+</body>
+
+</html>
