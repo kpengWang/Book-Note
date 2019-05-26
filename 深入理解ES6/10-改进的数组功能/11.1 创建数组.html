@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10.1 创建数组</title>
+</head>
+
+<body>
+  <ul>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+    <li class="item"></li>
+  </ul>
+
+  <script>
+    /*
+      Array.of()
+    */
+
+    // 在 < ES6 时，创建数组的两种方法
+    var arr1 = new Array(2)
+    var arr2 = [1, 2, 3]
+    console.log('arr1==>', arr1)
+    console.log('arr2==>', arr2)
+
+    //  ES6 新增两种方法
+    var arr3 = Array.of(1, 2)
+    console.log('arr3==>', arr3)
+    console.log('arr3.length==>', arr3.length)
+    console.log('arr3[0]==>', arr3[0])
+
+    var arr4 = Array.of(2)
+    console.log('arr4==>', arr4)
+    console.log('arr4.length==>', arr4.length)
+    console.log('arr4[0]==>', arr4[0])
+
+    var arr5 = Array.of('2')
+    console.log('arr5==>', arr5)
+    console.log('arr5.length==>', arr5.length)
+    console.log('arr5[0]==>', arr5[0])
+
+    /*
+      Array.from() 将类数组转换成真正数组
+    */
+    var lis1 = document.querySelectorAll('.item')
+    var lis2 = document.querySelectorAll('.item')
+
+    var makeArray = arrayLike => Array.prototype.slice.call(arrayLike)
+    console.log(lis1)
+    console.log(makeArray(lis1)) // 等价于 Array.from()
+    console.log(Array.from(lis2))
+
+    // 传入二参映射转换
+    var arr = [1, 2, 3, 4]
+    var helper = {
+      diff: 5,
+      add(val) {
+        return val + this.diff
+      }
+    }
+    console.log(Array.from(arr, val => val + 1)) // [2, 3, 4, 5]
+
+    // 传入三参改变this映射
+    console.log(Array.from(arr, helper.add, helper))
+
+    // 用
+  </script>
+</body>
+
+</html>
