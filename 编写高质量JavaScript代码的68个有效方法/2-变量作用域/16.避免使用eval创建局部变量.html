@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+  <body>
+    <h1></h1>
+    <p></p>
+    <script>
+      let node = {
+        type: 'test',
+        a: {
+          b: {
+            c: 123
+          }
+        }
+      }
 
-<body>
-  <h1></h1>
-  <p></p>
-  <script>
-  </script>
-</body>
+      const {
+        a: {
+          b: { c: text }
+        }
+      } = node
+      console.log({ text })
 
+      let node2 = ['red', 'green', 'blue', 'yellow']
+
+      const [x, y, ...t] = node2
+
+      console.log({ x, y, t })
+    </script>
+  </body>
 </html>
